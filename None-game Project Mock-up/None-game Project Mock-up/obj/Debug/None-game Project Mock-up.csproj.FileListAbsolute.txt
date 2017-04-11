@@ -8,3 +8,12 @@ c:\users\oliver\documents\visual studio 2015\Projects\None-game Project Mock-up\
 c:\users\oliver\documents\visual studio 2015\Projects\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.exe
 c:\users\oliver\documents\visual studio 2015\Projects\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.pdb
 c:\users\oliver\documents\visual studio 2015\Projects\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\System.Data.SQLite.dll
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.exe.config
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.exe
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.pdb
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.exe
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.pdb
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.csprojResolveAssemblyReference.cache
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Form1.resources
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Properties.Resources.resources
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.csproj.GenerateResource.Cache
