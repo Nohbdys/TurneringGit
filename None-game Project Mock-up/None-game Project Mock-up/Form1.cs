@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
@@ -15,49 +16,19 @@ namespace None_game_Project_Mock_up
     {
         #region Fields
 
-        enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, spillerMenu, nySpillerMenu, infoSpillerMenu}
+        public enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, spillerMenu, nySpillerMenu, infoSpillerMenu}
 
         Database database = new Database();
 
         #endregion
-        Menu CurrentMenu = Menu.mainMenu;
+        Menu CurrentMenu = Menu.mainMenu;      
 
         public Form1()
         {
             
             InitializeComponent();
 
-            #region ButtonVisibility
-            TidligTurn.Visible = true;
-            Spiller.Visible = true;
-            NyTurn.Visible = true;
-            Exit.Visible = true;
-
-            turnNavn.Visible = false;
-            turnType.Visible = false;
-            antalHold.Visible = false;
-            sportsgren.Visible = false;
-            startDate.Visible = false;
-            endDate.Visible = false;
-            label7.Visible = false;
-            label8.Visible = false;
-
-            textBox1.Visible = false;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = false;
-            textBox8.Visible = false;
-
-            spillerNy.Visible = false; // Done
-            spillerInfo.Visible = false; // Done
-            spillerTilbage.Visible = false; // Done
-            tidligTurnTilbage.Visible = false; // Done
-            nyTurnTilbage.Visible = false; // Done  
-            listBox1.Visible = false; //Done
-            #endregion
+         
             BackColor = Color.Green;
         }
 
@@ -65,59 +36,17 @@ namespace None_game_Project_Mock_up
         #region Methods
         private void button1_Click(object sender, EventArgs e)
         {
-            //Spiller
-            spillerNy.Visible = true;
-            spillerInfo.Visible = true;
-            spillerTilbage.Visible = true;
-
-            TidligTurn.Visible = false;
-            Spiller.Visible = false;
-            NyTurn.Visible = false;
-            Exit.Visible = false;
+            CurrentMenu = Menu.spillerMenu;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Tidligere Turnering
-            TidligTurn.Visible = false;
-            Spiller.Visible = false;
-            NyTurn.Visible = false;
-            Exit.Visible = false;
-
-            tidligTurnTilbage.Visible = true;
-            listBox1.Visible = true;
+            CurrentMenu = Menu.tidligTurnMenu;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BackColor = Color.DarkGreen;
-
-            // Ny Turnering
-            TidligTurn.Visible = false;
-            Spiller.Visible = false;
-            NyTurn.Visible = false;
-            Exit.Visible = false;
-
-            nyTurnTilbage.Visible = true;
-            textBox1.Visible = true;
-            textBox2.Visible = true;
-            textBox3.Visible = true;
-            textBox4.Visible = true;
-            textBox5.Visible = true;
-            textBox6.Visible = true;
-            textBox7.Visible = true;
-            textBox8.Visible = true;
-
-            turnNavn.Visible = true;
-            turnType.Visible = true;
-            antalHold.Visible = true;
-            sportsgren.Visible = true;
-            startDate.Visible = true;
-            endDate.Visible = true;
-            label7.Visible = true;
-            label8.Visible = true;
-
-
+            CurrentMenu = Menu.nyTurnMenu;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,62 +67,22 @@ namespace None_game_Project_Mock_up
             Environment.Exit(0);
         }
 
-        private void nyTurnTilbage_Click(object sender, EventArgs e)
-        {
-            BackColor = Color.Green;
-
-            nyTurnTilbage.Visible = false;
-
-
-            TidligTurn.Visible = true;
-            Spiller.Visible = true;
-            NyTurn.Visible = true;
-            Exit.Visible = true;
-            textBox1.Visible = false;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = false;
-            textBox8.Visible = false;
-
-            textBox9.Visible = false; // bleh
-
-            turnNavn.Visible = false;
-            turnType.Visible = false;
-            antalHold.Visible = false;
-            sportsgren.Visible = false;
-            startDate.Visible = false;
-            endDate.Visible = false;
-            label7.Visible = false;
-            label8.Visible = false;
-
-        }
-
-        private void tidligTurnTilbage_Click(object sender, EventArgs e)
-        {
-            tidligTurnTilbage.Visible = false;
-            listBox1.Visible = false;
-
-            TidligTurn.Visible = true;
-            Spiller.Visible = true;
-            NyTurn.Visible = true;
-            Exit.Visible = true;
-
-        }
-
         private void spillerTilbage_Click(object sender, EventArgs e)
         {
-            spillerNy.Visible = false;
-            spillerInfo.Visible = false;
-            spillerTilbage.Visible = false;
+            if (CurrentMenu == Menu.tidligTurnMenu)
+            {
+                CurrentMenu = Menu.mainMenu;
+            }
 
-            TidligTurn.Visible = true;
-            Spiller.Visible = true;
-            NyTurn.Visible = true;
-            Exit.Visible = true;
+            if (CurrentMenu == Menu.spillerMenu)
+            {
+                CurrentMenu = Menu.mainMenu;
+            }
 
+            if (CurrentMenu == Menu.nyTurnMenu)
+            {
+                CurrentMenu = Menu.mainMenu;
+            }
         }
 
         private void nySpiller_Click(object sender, EventArgs e)
@@ -233,6 +122,113 @@ namespace None_game_Project_Mock_up
 
             }
         }
-    
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            #region MainMenu
+            if (CurrentMenu == Menu.mainMenu)
+            {
+                TidligTurn.Visible = true;
+                Spiller.Visible = true;
+                NyTurn.Visible = true;
+                Exit.Visible = true;
+
+                turnNavn.Visible = false;
+                turnType.Visible = false;
+                antalHold.Visible = false;
+                sportsgren.Visible = false;
+                startDate.Visible = false;
+                endDate.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
+
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = false;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+
+                spillerNy.Visible = false; // Done
+                spillerInfo.Visible = false; // Done
+                tilbage.Visible = false; // Done 
+                listBox1.Visible = false; //Done
+               
+            }
+            #endregion
+
+            #region InfoSpillerMenu
+            if (CurrentMenu == Menu.infoSpillerMenu)
+            {
+
+            }
+            #endregion
+
+            #region NySpillerMenu 
+            if (CurrentMenu == Menu.nySpillerMenu)
+            {
+
+            }
+            #endregion
+
+            #region NyTurneringMenu
+            if (CurrentMenu == Menu.nyTurnMenu)
+            {
+                TidligTurn.Visible = false;
+                Spiller.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                textBox3.Visible = true;
+                textBox4.Visible = true;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+
+                turnNavn.Visible = true;
+                turnType.Visible = true;
+                antalHold.Visible = true;
+                sportsgren.Visible = true;
+                startDate.Visible = true;
+                endDate.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+            }
+            #endregion
+
+            #region SpillerMenu
+            if (CurrentMenu == Menu.spillerMenu)
+            {
+                spillerNy.Visible = true;
+                spillerInfo.Visible = true;
+                tilbage.Visible = true;
+
+                TidligTurn.Visible = false;
+                Spiller.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+            }
+            #endregion
+
+            #region TidligereTurneringMenu
+            if (CurrentMenu == Menu.tidligTurnMenu)
+            {
+                TidligTurn.Visible = false;
+                Spiller.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+
+                listBox1.Visible = true;
+            }
+            #endregion
+        }
     }
 }
