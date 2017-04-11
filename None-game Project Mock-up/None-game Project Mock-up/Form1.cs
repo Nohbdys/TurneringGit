@@ -16,9 +16,14 @@ namespace None_game_Project_Mock_up
     {
         #region Fields
 
-        public enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, spillerMenu, nySpillerMenu, infoSpillerMenu}
+        enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu}
 
         Database database = new Database();
+
+        Keys keyData;
+            
+        List<string> holdNavn = new List<string>();
+        bool addHold = false;
 
         #endregion
         Menu CurrentMenu = Menu.mainMenu;      
@@ -36,7 +41,7 @@ namespace None_game_Project_Mock_up
         #region Methods
         private void button1_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.spillerMenu;
+            CurrentMenu = Menu.holdMenu;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -74,7 +79,7 @@ namespace None_game_Project_Mock_up
                 CurrentMenu = Menu.mainMenu;
             }
 
-            if (CurrentMenu == Menu.spillerMenu)
+            if (CurrentMenu == Menu.holdMenu)
             {
                 CurrentMenu = Menu.mainMenu;
             }
@@ -129,7 +134,7 @@ namespace None_game_Project_Mock_up
             if (CurrentMenu == Menu.mainMenu)
             {
                 TidligTurn.Visible = true;
-                Spiller.Visible = true;
+                hold.Visible = true;
                 NyTurn.Visible = true;
                 Exit.Visible = true;
 
@@ -151,8 +156,8 @@ namespace None_game_Project_Mock_up
                 textBox7.Visible = false;
                 textBox8.Visible = false;
 
-                spillerNy.Visible = false; // Done
-                spillerInfo.Visible = false; // Done
+                holdNy.Visible = false; // Done
+                holdInfo.Visible = false; // Done
                 tilbage.Visible = false; // Done 
                 listBox1.Visible = false; //Done
                
@@ -160,14 +165,14 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region InfoSpillerMenu
-            if (CurrentMenu == Menu.infoSpillerMenu)
+            if (CurrentMenu == Menu.infoholdMenu)
             {
 
             }
             #endregion
 
             #region NySpillerMenu 
-            if (CurrentMenu == Menu.nySpillerMenu)
+            if (CurrentMenu == Menu.nyholdMenu)
             {
 
             }
@@ -177,7 +182,7 @@ namespace None_game_Project_Mock_up
             if (CurrentMenu == Menu.nyTurnMenu)
             {
                 TidligTurn.Visible = false;
-                Spiller.Visible = false;
+                hold.Visible = false;
                 NyTurn.Visible = false;
                 Exit.Visible = false;
                 tilbage.Visible = true;
@@ -203,14 +208,14 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region SpillerMenu
-            if (CurrentMenu == Menu.spillerMenu)
+            if (CurrentMenu == Menu.holdMenu)
             {
-                spillerNy.Visible = true;
-                spillerInfo.Visible = true;
+                holdNy.Visible = true;
+                holdInfo.Visible = true;
                 tilbage.Visible = true;
 
                 TidligTurn.Visible = false;
-                Spiller.Visible = false;
+                hold.Visible = false;
                 NyTurn.Visible = false;
                 Exit.Visible = false;
             }
@@ -220,7 +225,7 @@ namespace None_game_Project_Mock_up
             if (CurrentMenu == Menu.tidligTurnMenu)
             {
                 TidligTurn.Visible = false;
-                Spiller.Visible = false;
+                hold.Visible = false;
                 NyTurn.Visible = false;
                 Exit.Visible = false;
                 tilbage.Visible = true;
@@ -229,6 +234,33 @@ namespace None_game_Project_Mock_up
                 listBox1.Visible = true;
             }
             #endregion
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+
+
+            
+            /*
+            KeyEventArgs key = new KeyEventArgs(keyData);
+            if (key.Control && key.KeyCode == Keys.Enter)
+            {
+                BackColor = Color.Blue;
+            }
+            */
+        }
+
+        private void AddTeam_Click(object sender, EventArgs e)
+        {
+            addHold = true;
+            if (addHold && textBox9.TextLength > 0)
+            {
+                holdNavn.Add(textBox9.Text);
+                textBox9.Clear();
+                addHold = false;
+            }
+            
         }
     }
 }
