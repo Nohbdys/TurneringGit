@@ -21,9 +21,9 @@ namespace None_game_Project_Mock_up
 
         Database database = new Database();
 
-        Keys keyData;
+      
 
-        List<string> holdNavn = new List<string>();
+        List<Hold> holdList = new List<Hold>();
         bool addHold = false;
 
         #endregion
@@ -58,6 +58,13 @@ namespace None_game_Project_Mock_up
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Get the currently selected item in the ListBox.
+            string curItem = listBox1.SelectedItem.ToString();
+
+            label1.Text = (test.HoldNavn).ToString();
+            label2.Text = (test.PlayerAmount).ToString();
+            label3.Text = (test.Win).ToString();
+            label4.Text = (test.Loss).ToString();
 
         }
 
@@ -105,13 +112,6 @@ namespace None_game_Project_Mock_up
         }
 
         #endregion
-
-
-        private void whatever()
-        {
-
-            //rnd(0, B);
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -232,6 +232,20 @@ namespace None_game_Project_Mock_up
                 tilbage.Visible = true;
 
                 listBox1.Visible = true;
+
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                lossLabel.Visible = true;
+                winLabel.Visible = true;
+                antalSpillerLabel.Visible = true;
+                holdNavnLabel.Visible = true;
+
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
             }
             #endregion
         }
@@ -257,18 +271,29 @@ namespace None_game_Project_Mock_up
             addHold = true;
             if (addHold && textBox9.TextLength > 0)
             {
-                holdNavn.Add(textBox9.Text);
+
+                Hold test = new Hold((string)textBox9.Text, 0, Int32.Parse(textBox10.Text), Int32.Parse(textBox11.Text), 0, 0, 0, "fodbold", Int32.Parse(textBox12.Text), 0);
+
+
+                holdList.Add(test);
+
                 textBox9.Clear();
                 addHold = false;
+
             }
+
             listBox1.Items.Clear();
-            foreach (String hold in holdNavn)
+
+            foreach (Hold hold in holdList)
             {
+
                 count++;
-                if (holdNavn.Count >= count)
+                if (holdList.Count >= count)
                 {
-                    listBox1.Items.Add(hold);
+                    listBox1.Items.Add(hold.HoldNavn);
+
                 }
+
             }
         }
     }

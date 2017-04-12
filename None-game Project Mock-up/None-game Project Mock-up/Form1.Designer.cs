@@ -58,6 +58,17 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.AddTeam = new System.Windows.Forms.Button();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.holdNavnLabel = new System.Windows.Forms.Label();
+            this.antalSpillerLabel = new System.Windows.Forms.Label();
+            this.winLabel = new System.Windows.Forms.Label();
+            this.lossLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // hold
@@ -287,11 +298,12 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(841, 92);
+            this.textBox9.Location = new System.Drawing.Point(462, 17);
             this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 22);
             this.textBox9.TabIndex = 30;
+            this.textBox9.Visible = false;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // Update
@@ -309,11 +321,129 @@
             this.AddTeam.UseVisualStyleBackColor = true;
             this.AddTeam.Click += new System.EventHandler(this.AddTeam_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(667, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "label1";
+            this.label1.Visible = false;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(462, 54);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 22);
+            this.textBox10.TabIndex = 33;
+            this.textBox10.Visible = false;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(462, 92);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 22);
+            this.textBox11.TabIndex = 34;
+            this.textBox11.Visible = false;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(462, 127);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 22);
+            this.textBox12.TabIndex = 35;
+            this.textBox12.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(667, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "label2";
+            this.label2.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(667, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "label3";
+            this.label3.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(667, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "label4";
+            this.label4.Visible = false;
+            // 
+            // holdNavnLabel
+            // 
+            this.holdNavnLabel.AutoSize = true;
+            this.holdNavnLabel.Location = new System.Drawing.Point(382, 20);
+            this.holdNavnLabel.Name = "holdNavnLabel";
+            this.holdNavnLabel.Size = new System.Drawing.Size(74, 17);
+            this.holdNavnLabel.TabIndex = 39;
+            this.holdNavnLabel.Text = "Hold Navn";
+            this.holdNavnLabel.Visible = false;
+            // 
+            // antalSpillerLabel
+            // 
+            this.antalSpillerLabel.AutoSize = true;
+            this.antalSpillerLabel.Location = new System.Drawing.Point(367, 57);
+            this.antalSpillerLabel.Name = "antalSpillerLabel";
+            this.antalSpillerLabel.Size = new System.Drawing.Size(89, 17);
+            this.antalSpillerLabel.TabIndex = 40;
+            this.antalSpillerLabel.Text = "Antal spillere";
+            this.antalSpillerLabel.Visible = false;
+            // 
+            // winLabel
+            // 
+            this.winLabel.AutoSize = true;
+            this.winLabel.Location = new System.Drawing.Point(417, 95);
+            this.winLabel.Name = "winLabel";
+            this.winLabel.Size = new System.Drawing.Size(39, 17);
+            this.winLabel.TabIndex = 41;
+            this.winLabel.Text = "Wins";
+            this.winLabel.Visible = false;
+            // 
+            // lossLabel
+            // 
+            this.lossLabel.AutoSize = true;
+            this.lossLabel.Location = new System.Drawing.Point(417, 132);
+            this.lossLabel.Name = "lossLabel";
+            this.lossLabel.Size = new System.Drawing.Size(38, 17);
+            this.lossLabel.TabIndex = 42;
+            this.lossLabel.Text = "Loss";
+            this.lossLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 510);
+            this.Controls.Add(this.lossLabel);
+            this.Controls.Add(this.winLabel);
+            this.Controls.Add(this.antalSpillerLabel);
+            this.Controls.Add(this.holdNavnLabel);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.AddTeam);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label8);
@@ -381,6 +511,17 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button AddTeam;
         private System.Windows.Forms.ColorDialog colorDialog2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label holdNavnLabel;
+        private System.Windows.Forms.Label antalSpillerLabel;
+        private System.Windows.Forms.Label winLabel;
+        private System.Windows.Forms.Label lossLabel;
     }
 }
 
