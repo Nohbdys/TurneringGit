@@ -57,6 +57,7 @@
             this.Update = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.AddTeam = new System.Windows.Forms.Button();
+            this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // hold
@@ -379,6 +380,7 @@
         private System.Windows.Forms.Timer Update;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button AddTeam;
+        private System.Windows.Forms.ColorDialog colorDialog2;
     }
 }
 

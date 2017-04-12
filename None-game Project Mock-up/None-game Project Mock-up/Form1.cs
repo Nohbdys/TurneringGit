@@ -14,26 +14,28 @@ namespace None_game_Project_Mock_up
 {
     public partial class Form1 : Form
     {
+
         #region Fields
 
-        enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu}
+        enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu }
 
         Database database = new Database();
 
         Keys keyData;
-            
+
         List<string> holdNavn = new List<string>();
         bool addHold = false;
 
         #endregion
-        Menu CurrentMenu = Menu.mainMenu;      
+
+        Menu CurrentMenu = Menu.mainMenu;
 
         public Form1()
         {
-            
+
             InitializeComponent();
 
-         
+
             BackColor = Color.Green;
         }
 
@@ -102,7 +104,7 @@ namespace None_game_Project_Mock_up
 
         }
 
-#endregion
+        #endregion
 
 
         private void whatever()
@@ -116,14 +118,13 @@ namespace None_game_Project_Mock_up
 
         }
 
-
-            private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Enter && textBox9.Visible == true)
             {
 
-                
+
 
             }
         }
@@ -160,7 +161,7 @@ namespace None_game_Project_Mock_up
                 holdInfo.Visible = false; // Done
                 tilbage.Visible = false; // Done 
                 listBox1.Visible = false; //Done
-               
+
             }
             #endregion
 
@@ -230,7 +231,6 @@ namespace None_game_Project_Mock_up
                 Exit.Visible = false;
                 tilbage.Visible = true;
 
-
                 listBox1.Visible = true;
             }
             #endregion
@@ -239,9 +239,6 @@ namespace None_game_Project_Mock_up
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
-
-
-            
             /*
             KeyEventArgs key = new KeyEventArgs(keyData);
             if (key.Control && key.KeyCode == Keys.Enter)
@@ -249,10 +246,14 @@ namespace None_game_Project_Mock_up
                 BackColor = Color.Blue;
             }
             */
+
         }
 
         private void AddTeam_Click(object sender, EventArgs e)
         {
+
+            int count = 0;
+
             addHold = true;
             if (addHold && textBox9.TextLength > 0)
             {
@@ -260,7 +261,15 @@ namespace None_game_Project_Mock_up
                 textBox9.Clear();
                 addHold = false;
             }
-            
+            listBox1.Items.Clear();
+            foreach (String hold in holdNavn)
+            {
+                count++;
+                if (holdNavn.Count >= count)
+                {
+                    listBox1.Items.Add(hold);
+                }
+            }
         }
     }
 }
