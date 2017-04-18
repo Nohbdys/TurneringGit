@@ -69,6 +69,7 @@
             this.antalSpillerLabel = new System.Windows.Forms.Label();
             this.winLabel = new System.Windows.Forms.Label();
             this.lossLabel = new System.Windows.Forms.Label();
+            this.colorDialog3 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // hold
@@ -522,6 +523,7 @@
         private System.Windows.Forms.Label antalSpillerLabel;
         private System.Windows.Forms.Label winLabel;
         private System.Windows.Forms.Label lossLabel;
+        private System.Windows.Forms.ColorDialog colorDialog3;
     }
 }
 

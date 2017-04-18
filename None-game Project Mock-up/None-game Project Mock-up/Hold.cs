@@ -9,17 +9,17 @@ namespace None_game_Project_Mock_up
     public class Hold
     {
         private string holdNavn;
-        private int goal;
-        private int win;
-        private int loss;
-        private int draw;
-        private int matches;
-        private int playerAmount;
+        private string goal;
+        private string win;
+        private string loss;
+        private string draw;
+        private string matches;
+        private string playerAmount;
         private string sportType;
-        private int tournWins;
-        private int division;
+        private string tournWins;
+        private string division;
 
-        public Hold(string holdNavn, int goal, int win, int loss, int draw, int matches, int tournWins, string sportType, int playerAmount, int division)
+        public Hold(string holdNavn, string goal, string win, string loss, string draw, string matches, string tournWins, string sportType, string playerAmount, string division)
         {
             this.holdNavn = holdNavn;
             this.goal = goal;
@@ -37,19 +37,19 @@ namespace None_game_Project_Mock_up
         {
 
         }
-        public int Division
+        public string Division
         {
             get { return division; }
             set { division = value; }
         }
 
-        public int Draw
+        public string Draw
         {
             get { return draw; }
             set { draw = value; }
         }
 
-        public int Goal
+        public string Goal
         {
             get { return goal; }
             set { goal = value; }
@@ -61,19 +61,19 @@ namespace None_game_Project_Mock_up
             set { holdNavn = value; }
         }
         
-        public int Loss
+        public string Loss
         {
             get { return loss; }
             set { loss = value; }
         }
 
-        public int Matches
+        public string Matches
         {
             get { return matches; }
             set { matches = value; }
         }
 
-        public int PlayerAmount
+        public string PlayerAmount
         {
             get { return playerAmount; }
             set { playerAmount = value; }
@@ -85,13 +85,13 @@ namespace None_game_Project_Mock_up
             set { sportType = value; }
         }
 
-        public int TournWins
+        public string TournWins
         {
             get { return tournWins; }
             set { tournWins = value; }
         }
 
-        public int Win
+        public string Win
         {
             get { return win; }
             set { win = value; }
