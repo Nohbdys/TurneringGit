@@ -16,7 +16,7 @@ namespace None_game_Project_Mock_up
     {
 
         #region Fields
-        enum Menu : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu }
+        enum MenuState : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu }
 
         Database database = new Database();
 
@@ -34,7 +34,7 @@ namespace None_game_Project_Mock_up
         bool holdRead = false;
         #endregion
 
-        Menu CurrentMenu = Menu.mainMenu;
+        MenuState CurrentMenu = MenuState.mainMenu;
 
         public Form1()
         {
@@ -49,23 +49,27 @@ namespace None_game_Project_Mock_up
         #region Methods
         private void button1_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.holdMenu;
+            CurrentMenu = MenuState.holdMenu;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.tidligTurnMenu;
+            CurrentMenu = MenuState.tidligTurnMenu;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.nyTurnMenu;
+            CurrentMenu = MenuState.nyTurnMenu;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Get the currently selected item in the ListBox.
-            curItem = listBox1.SelectedItem.ToString();
+            if (listBox1.SelectedItem != null)
+            {
+                curItem = listBox1.SelectedItem.ToString();
+
+            }
 
             holdRead = true;
 
@@ -89,40 +93,40 @@ namespace None_game_Project_Mock_up
 
         private void spillerTilbage_Click(object sender, EventArgs e)
         {
-            if (CurrentMenu == Menu.tidligTurnMenu)
+            if (CurrentMenu == MenuState.tidligTurnMenu)
             {
-                CurrentMenu = Menu.mainMenu;
+                CurrentMenu = MenuState.mainMenu;
             }
 
-            if (CurrentMenu == Menu.holdMenu)
+            if (CurrentMenu == MenuState.holdMenu)
             {
-                CurrentMenu = Menu.mainMenu;
+                CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == Menu.nyholdMenu)
+            if (CurrentMenu == MenuState.nyholdMenu)
             {
-                CurrentMenu = Menu.holdMenu;
+                CurrentMenu = MenuState.holdMenu;
             }
 
-            if (CurrentMenu == Menu.nyTurnMenu)
+            if (CurrentMenu == MenuState.nyTurnMenu)
             {
-                CurrentMenu = Menu.mainMenu;
+                CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == Menu.infoholdMenu)
+            if (CurrentMenu == MenuState.infoholdMenu)
             {
-                CurrentMenu = Menu.holdMenu;
+                CurrentMenu = MenuState.holdMenu;
             }
 
         }
 
         private void nySpiller_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.nyholdMenu;
+            CurrentMenu = MenuState.nyholdMenu;
 
         }
 
         private void spillerInfo_Click(object sender, EventArgs e)
         {
-            CurrentMenu = Menu.infoholdMenu;
+            CurrentMenu = MenuState.infoholdMenu;
 
         }
 
@@ -147,7 +151,7 @@ namespace None_game_Project_Mock_up
         private void timer1_Tick(object sender, EventArgs e)
         {
             #region MainMenu
-            if (CurrentMenu == Menu.mainMenu)
+            if (CurrentMenu == MenuState.mainMenu)
             {
                 TidligTurn.Visible = true;
                 hold.Visible = true;
@@ -183,7 +187,7 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region InfoHoldMenu
-            if (CurrentMenu == Menu.infoholdMenu)
+            if (CurrentMenu == MenuState.infoholdMenu)
             {
 
                 TidligTurn.Visible = false;
@@ -208,7 +212,7 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region NyHoldMenu 
-            if (CurrentMenu == Menu.nyholdMenu)
+            if (CurrentMenu == MenuState.nyholdMenu)
             {
                 lossLabel.Visible = true;
                 winLabel.Visible = true;
@@ -227,7 +231,7 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region NyTurneringMenu
-            if (CurrentMenu == Menu.nyTurnMenu)
+            if (CurrentMenu == MenuState.nyTurnMenu)
             {
                 TidligTurn.Visible = false;
                 hold.Visible = false;
@@ -257,7 +261,7 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region HoldMenu
-            if (CurrentMenu == Menu.holdMenu)
+            if (CurrentMenu == MenuState.holdMenu)
             {
                 holdNy.Visible = true;
                 holdInfo.Visible = true;
@@ -290,7 +294,7 @@ namespace None_game_Project_Mock_up
             #endregion
 
             #region TidligereTurneringMenu
-            if (CurrentMenu == Menu.tidligTurnMenu)
+            if (CurrentMenu == MenuState.tidligTurnMenu)
             {
                 TidligTurn.Visible = false;
                 hold.Visible = false;
