@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.hold = new System.Windows.Forms.Button();
             this.TidligTurn = new System.Windows.Forms.Button();
             this.NyTurn = new System.Windows.Forms.Button();
@@ -70,6 +73,10 @@
             this.winLabel = new System.Windows.Forms.Label();
             this.lossLabel = new System.Windows.Forms.Label();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
+            this.colorDialog4 = new System.Windows.Forms.ColorDialog();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // hold
@@ -320,6 +327,7 @@
             this.AddTeam.TabIndex = 31;
             this.AddTeam.Text = "Tilføj Hold";
             this.AddTeam.UseVisualStyleBackColor = true;
+            this.AddTeam.Visible = false;
             this.AddTeam.Click += new System.EventHandler(this.AddTeam_Click);
             // 
             // label1
@@ -382,7 +390,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(667, 130);
+            this.label4.Location = new System.Drawing.Point(667, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 38;
@@ -429,11 +437,41 @@
             this.lossLabel.Text = "Loss";
             this.lossLabel.Visible = false;
             // 
+            // chart1
+            // 
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
+            this.chart1.Location = new System.Drawing.Point(385, 185);
+            this.chart1.Name = "chart1";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(648, 300);
+            this.chart1.TabIndex = 43;
+            this.chart1.Text = "chart1";
+            this.chart1.Visible = false;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Location = new System.Drawing.Point(310, 11);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(356, 452);
+            this.listBox2.TabIndex = 44;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 510);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.lossLabel);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.antalSpillerLabel);
@@ -476,6 +514,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,6 +563,9 @@
         private System.Windows.Forms.Label winLabel;
         private System.Windows.Forms.Label lossLabel;
         private System.Windows.Forms.ColorDialog colorDialog3;
+        private System.Windows.Forms.ColorDialog colorDialog4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
 

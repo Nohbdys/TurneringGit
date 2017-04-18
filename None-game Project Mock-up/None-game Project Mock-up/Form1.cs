@@ -98,22 +98,31 @@ namespace None_game_Project_Mock_up
             {
                 CurrentMenu = Menu.mainMenu;
             }
+            if (CurrentMenu == Menu.nyholdMenu)
+            {
+                CurrentMenu = Menu.holdMenu;
+            }
 
             if (CurrentMenu == Menu.nyTurnMenu)
             {
                 CurrentMenu = Menu.mainMenu;
             }
+            if (CurrentMenu == Menu.infoholdMenu)
+            {
+                CurrentMenu = Menu.holdMenu;
+            }
+
         }
 
         private void nySpiller_Click(object sender, EventArgs e)
         {
-
+            CurrentMenu = Menu.nyholdMenu;
 
         }
 
         private void spillerInfo_Click(object sender, EventArgs e)
         {
-
+            CurrentMenu = Menu.infoholdMenu;
 
         }
 
@@ -145,6 +154,7 @@ namespace None_game_Project_Mock_up
                 NyTurn.Visible = true;
                 Exit.Visible = true;
 
+                chart1.Visible = false;
                 turnNavn.Visible = false;
                 turnType.Visible = false;
                 antalHold.Visible = false;
@@ -162,6 +172,7 @@ namespace None_game_Project_Mock_up
                 textBox6.Visible = false;
                 textBox7.Visible = false;
                 textBox8.Visible = false;
+                listBox2.Visible = false;
 
                 holdNy.Visible = false; // Done
                 holdInfo.Visible = false; // Done
@@ -171,17 +182,47 @@ namespace None_game_Project_Mock_up
             }
             #endregion
 
-            #region InfoSpillerMenu
+            #region InfoHoldMenu
             if (CurrentMenu == Menu.infoholdMenu)
             {
+
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                holdNy.Visible = false;
+                holdInfo.Visible = false;
+                tilbage.Visible = true;
+
+                listBox1.Visible = true;
+
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+
+                chart1.Visible = true;
+
+
 
             }
             #endregion
 
-            #region NySpillerMenu 
+            #region NyHoldMenu 
             if (CurrentMenu == Menu.nyholdMenu)
             {
+                lossLabel.Visible = true;
+                winLabel.Visible = true;
+                antalSpillerLabel.Visible = true;
+                holdNavnLabel.Visible = true;
 
+                holdNy.Visible = false;
+                holdInfo.Visible = false;
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
+                AddTeam.Visible = true;
+                listBox1.Visible = true;
             }
             #endregion
 
@@ -211,20 +252,40 @@ namespace None_game_Project_Mock_up
                 endDate.Visible = true;
                 label7.Visible = true;
                 label8.Visible = true;
+                listBox2.Visible = true;
             }
             #endregion
 
-            #region SpillerMenu
+            #region HoldMenu
             if (CurrentMenu == Menu.holdMenu)
             {
                 holdNy.Visible = true;
                 holdInfo.Visible = true;
                 tilbage.Visible = true;
 
+                chart1.Visible = false;
                 TidligTurn.Visible = false;
                 hold.Visible = false;
                 NyTurn.Visible = false;
                 Exit.Visible = false;
+
+                lossLabel.Visible = false;
+                winLabel.Visible = false;
+                antalSpillerLabel.Visible = false;
+                holdNavnLabel.Visible = false;
+
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                AddTeam.Visible = false;
+                listBox1.Visible = false;
+
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+
             }
             #endregion
 
@@ -237,21 +298,9 @@ namespace None_game_Project_Mock_up
                 Exit.Visible = false;
                 tilbage.Visible = true;
 
-                listBox1.Visible = true;
+                listBox2.Visible = true;
 
-                label1.Visible = true;
-                label2.Visible = true;
-                label3.Visible = true;
-                label4.Visible = true;
-                lossLabel.Visible = true;
-                winLabel.Visible = true;
-                antalSpillerLabel.Visible = true;
-                holdNavnLabel.Visible = true;
 
-                textBox9.Visible = true;
-                textBox10.Visible = true;
-                textBox11.Visible = true;
-                textBox12.Visible = true;
             }
             #endregion
         }
@@ -278,7 +327,7 @@ namespace None_game_Project_Mock_up
             if (addHold && textBox9.TextLength > 0 && textBox10.TextLength > 0 && textBox11.TextLength > 0 && textBox12.TextLength > 0)
             {
 
-
+                //textBox1 = textBox1.Text;
                 textbox9 = textBox9.Text;
                 textbox10 = textBox10.Text;
                 textbox11 = textBox11.Text;
@@ -314,13 +363,11 @@ namespace None_game_Project_Mock_up
         private void holdMethod()
         {
 
-
-
             if (holdAdd)
             {
 
                 holdList.Add(new Hold(textbox9, "", textbox11, textbox12, "", "", "", "fodbold", textbox10, ""));
-        
+
                 holdAdd = false;
 
             }
@@ -334,10 +381,15 @@ namespace None_game_Project_Mock_up
                         label2.Text = (hold.PlayerAmount).ToString();
                         label3.Text = (hold.Win).ToString();
                         label4.Text = (hold.Loss).ToString();
-                    }      
+                    }
                 }
                 holdRead = false;
             }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
