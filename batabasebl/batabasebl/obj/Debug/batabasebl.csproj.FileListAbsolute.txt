@@ -1,0 +1,7 @@
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\bin\Debug\batabasebl.exe.config
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\bin\Debug\batabasebl.exe
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\bin\Debug\batabasebl.pdb
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\bin\Debug\System.Data.SQLite.dll
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.csprojResolveAssemblyReference.cache
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.exe
+c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.pdb
