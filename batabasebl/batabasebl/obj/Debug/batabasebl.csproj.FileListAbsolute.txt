@@ -5,3 +5,9 @@ c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\bin\
 c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.csprojResolveAssemblyReference.cache
 c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.exe
 c:\users\oliver\documents\visual studio 2015\Projects\batabasebl\batabasebl\obj\Debug\batabasebl.pdb
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\bin\Debug\batabasebl.exe.config
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\obj\Debug\batabasebl.exe
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\obj\Debug\batabasebl.pdb
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\bin\Debug\batabasebl.exe
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\bin\Debug\batabasebl.pdb
+C:\Users\Oliver\Desktop\Tortoise Git\TurneringGit\batabasebl\batabasebl\obj\Debug\batabasebl.csprojResolveAssemblyReference.cache
