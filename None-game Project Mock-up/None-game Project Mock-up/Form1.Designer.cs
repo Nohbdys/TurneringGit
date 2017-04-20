@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.hold = new System.Windows.Forms.Button();
             this.TidligTurn = new System.Windows.Forms.Button();
             this.NyTurn = new System.Windows.Forms.Button();
@@ -76,15 +76,19 @@
             this.colorDialog4 = new System.Windows.Forms.ColorDialog();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Slet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // hold
             // 
-            this.hold.Location = new System.Drawing.Point(407, 295);
-            this.hold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.hold.Location = new System.Drawing.Point(305, 240);
+            this.hold.Margin = new System.Windows.Forms.Padding(2);
             this.hold.Name = "hold";
-            this.hold.Size = new System.Drawing.Size(223, 75);
+            this.hold.Size = new System.Drawing.Size(167, 61);
             this.hold.TabIndex = 0;
             this.hold.Text = "Hold";
             this.hold.UseVisualStyleBackColor = true;
@@ -92,10 +96,10 @@
             // 
             // TidligTurn
             // 
-            this.TidligTurn.Location = new System.Drawing.Point(407, 202);
-            this.TidligTurn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TidligTurn.Location = new System.Drawing.Point(305, 164);
+            this.TidligTurn.Margin = new System.Windows.Forms.Padding(2);
             this.TidligTurn.Name = "TidligTurn";
-            this.TidligTurn.Size = new System.Drawing.Size(223, 75);
+            this.TidligTurn.Size = new System.Drawing.Size(167, 61);
             this.TidligTurn.TabIndex = 1;
             this.TidligTurn.Text = "Tidligere turneringer";
             this.TidligTurn.UseVisualStyleBackColor = true;
@@ -103,10 +107,10 @@
             // 
             // NyTurn
             // 
-            this.NyTurn.Location = new System.Drawing.Point(407, 110);
-            this.NyTurn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NyTurn.Location = new System.Drawing.Point(305, 89);
+            this.NyTurn.Margin = new System.Windows.Forms.Padding(2);
             this.NyTurn.Name = "NyTurn";
-            this.NyTurn.Size = new System.Drawing.Size(223, 75);
+            this.NyTurn.Size = new System.Drawing.Size(167, 61);
             this.NyTurn.TabIndex = 2;
             this.NyTurn.Text = "Ny Turnering";
             this.NyTurn.UseVisualStyleBackColor = true;
@@ -114,10 +118,10 @@
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(12, 458);
-            this.Exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Exit.Location = new System.Drawing.Point(9, 372);
+            this.Exit.Margin = new System.Windows.Forms.Padding(2);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(84, 39);
+            this.Exit.Size = new System.Drawing.Size(63, 32);
             this.Exit.TabIndex = 3;
             this.Exit.Text = "Exit";
             this.Exit.UseVisualStyleBackColor = true;
@@ -125,10 +129,10 @@
             // 
             // holdNy
             // 
-            this.holdNy.Location = new System.Drawing.Point(373, 222);
-            this.holdNy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.holdNy.Location = new System.Drawing.Point(280, 180);
+            this.holdNy.Margin = new System.Windows.Forms.Padding(2);
             this.holdNy.Name = "holdNy";
-            this.holdNy.Size = new System.Drawing.Size(101, 78);
+            this.holdNy.Size = new System.Drawing.Size(76, 63);
             this.holdNy.TabIndex = 4;
             this.holdNy.Text = "Nyt hold";
             this.holdNy.UseVisualStyleBackColor = true;
@@ -136,10 +140,10 @@
             // 
             // holdInfo
             // 
-            this.holdInfo.Location = new System.Drawing.Point(565, 222);
-            this.holdInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.holdInfo.Location = new System.Drawing.Point(424, 180);
+            this.holdInfo.Margin = new System.Windows.Forms.Padding(2);
             this.holdInfo.Name = "holdInfo";
-            this.holdInfo.Size = new System.Drawing.Size(101, 78);
+            this.holdInfo.Size = new System.Drawing.Size(76, 63);
             this.holdInfo.TabIndex = 5;
             this.holdInfo.Text = "Hold info";
             this.holdInfo.UseVisualStyleBackColor = true;
@@ -148,20 +152,19 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox1.Location = new System.Drawing.Point(9, 10);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(356, 436);
+            this.listBox1.Size = new System.Drawing.Size(268, 355);
             this.listBox1.TabIndex = 6;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tilbage
             // 
-            this.tilbage.Location = new System.Drawing.Point(12, 457);
-            this.tilbage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tilbage.Location = new System.Drawing.Point(9, 371);
+            this.tilbage.Margin = new System.Windows.Forms.Padding(2);
             this.tilbage.Name = "tilbage";
-            this.tilbage.Size = new System.Drawing.Size(84, 39);
+            this.tilbage.Size = new System.Drawing.Size(63, 32);
             this.tilbage.TabIndex = 10;
             this.tilbage.Text = "Tilbage";
             this.tilbage.UseVisualStyleBackColor = true;
@@ -169,83 +172,85 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(31, 17);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Location = new System.Drawing.Point(23, 14);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 13;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(31, 73);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Location = new System.Drawing.Point(23, 59);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.Size = new System.Drawing.Size(76, 20);
             this.textBox2.TabIndex = 14;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(31, 129);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Location = new System.Drawing.Point(23, 105);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.Size = new System.Drawing.Size(76, 20);
             this.textBox3.TabIndex = 15;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(31, 185);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.Location = new System.Drawing.Point(23, 150);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.Size = new System.Drawing.Size(76, 20);
             this.textBox4.TabIndex = 16;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(31, 241);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox5.Location = new System.Drawing.Point(23, 196);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
+            this.textBox5.Size = new System.Drawing.Size(76, 20);
             this.textBox5.TabIndex = 17;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(31, 297);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox6.Location = new System.Drawing.Point(23, 241);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 22);
+            this.textBox6.Size = new System.Drawing.Size(76, 20);
             this.textBox6.TabIndex = 18;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(31, 353);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox7.Location = new System.Drawing.Point(23, 287);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 22);
+            this.textBox7.Size = new System.Drawing.Size(76, 20);
             this.textBox7.TabIndex = 19;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(31, 409);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox8.Location = new System.Drawing.Point(23, 332);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 22);
+            this.textBox8.Size = new System.Drawing.Size(76, 20);
             this.textBox8.TabIndex = 20;
             // 
             // turnNavn
             // 
             this.turnNavn.AutoSize = true;
-            this.turnNavn.Location = new System.Drawing.Point(137, 20);
+            this.turnNavn.Location = new System.Drawing.Point(103, 16);
+            this.turnNavn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.turnNavn.Name = "turnNavn";
-            this.turnNavn.Size = new System.Drawing.Size(139, 17);
+            this.turnNavn.Size = new System.Drawing.Size(105, 13);
             this.turnNavn.TabIndex = 22;
             this.turnNavn.Text = "Navnet på Turnering";
             // 
             // turnType
             // 
             this.turnType.AutoSize = true;
-            this.turnType.Location = new System.Drawing.Point(137, 76);
+            this.turnType.Location = new System.Drawing.Point(103, 62);
+            this.turnType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.turnType.Name = "turnType";
-            this.turnType.Size = new System.Drawing.Size(104, 17);
+            this.turnType.Size = new System.Drawing.Size(77, 13);
             this.turnType.TabIndex = 23;
             this.turnType.Text = "Turneringstype";
             this.turnType.Click += new System.EventHandler(this.label2_Click);
@@ -253,63 +258,69 @@
             // antalHold
             // 
             this.antalHold.AutoSize = true;
-            this.antalHold.Location = new System.Drawing.Point(137, 132);
+            this.antalHold.Location = new System.Drawing.Point(103, 107);
+            this.antalHold.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.antalHold.Name = "antalHold";
-            this.antalHold.Size = new System.Drawing.Size(73, 17);
+            this.antalHold.Size = new System.Drawing.Size(56, 13);
             this.antalHold.TabIndex = 24;
             this.antalHold.Text = "Antal Hold";
             // 
             // sportsgren
             // 
             this.sportsgren.AutoSize = true;
-            this.sportsgren.Location = new System.Drawing.Point(137, 188);
+            this.sportsgren.Location = new System.Drawing.Point(103, 153);
+            this.sportsgren.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sportsgren.Name = "sportsgren";
-            this.sportsgren.Size = new System.Drawing.Size(78, 17);
+            this.sportsgren.Size = new System.Drawing.Size(58, 13);
             this.sportsgren.TabIndex = 25;
             this.sportsgren.Text = "Sportsgren";
             // 
             // startDate
             // 
             this.startDate.AutoSize = true;
-            this.startDate.Location = new System.Drawing.Point(137, 244);
+            this.startDate.Location = new System.Drawing.Point(103, 198);
+            this.startDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(72, 17);
+            this.startDate.Size = new System.Drawing.Size(55, 13);
             this.startDate.TabIndex = 26;
             this.startDate.Text = "Start Dato";
             // 
             // endDate
             // 
             this.endDate.AutoSize = true;
-            this.endDate.Location = new System.Drawing.Point(137, 300);
+            this.endDate.Location = new System.Drawing.Point(103, 244);
+            this.endDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(66, 17);
+            this.endDate.Size = new System.Drawing.Size(51, 13);
             this.endDate.TabIndex = 27;
             this.endDate.Text = "Slut Dato";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(137, 356);
+            this.label7.Location = new System.Drawing.Point(103, 289);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 28;
             this.label7.Text = "label7";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(137, 412);
+            this.label8.Location = new System.Drawing.Point(103, 335);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 29;
             this.label8.Text = "label8";
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(462, 17);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox9.Location = new System.Drawing.Point(346, 14);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 22);
+            this.textBox9.Size = new System.Drawing.Size(76, 20);
             this.textBox9.TabIndex = 30;
             this.textBox9.Visible = false;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
@@ -321,9 +332,10 @@
             // 
             // AddTeam
             // 
-            this.AddTeam.Location = new System.Drawing.Point(863, 346);
+            this.AddTeam.Location = new System.Drawing.Point(647, 281);
+            this.AddTeam.Margin = new System.Windows.Forms.Padding(2);
             this.AddTeam.Name = "AddTeam";
-            this.AddTeam.Size = new System.Drawing.Size(75, 23);
+            this.AddTeam.Size = new System.Drawing.Size(56, 19);
             this.AddTeam.TabIndex = 31;
             this.AddTeam.Text = "Tilføj Hold";
             this.AddTeam.UseVisualStyleBackColor = true;
@@ -333,46 +345,48 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(667, 20);
+            this.label1.Location = new System.Drawing.Point(500, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 32;
             this.label1.Text = "label1";
             this.label1.Visible = false;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(462, 54);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox10.Location = new System.Drawing.Point(346, 44);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 22);
+            this.textBox10.Size = new System.Drawing.Size(76, 20);
             this.textBox10.TabIndex = 33;
             this.textBox10.Visible = false;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(462, 92);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox11.Location = new System.Drawing.Point(346, 75);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 22);
+            this.textBox11.Size = new System.Drawing.Size(76, 20);
             this.textBox11.TabIndex = 34;
             this.textBox11.Visible = false;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(462, 127);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox12.Location = new System.Drawing.Point(346, 103);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 22);
+            this.textBox12.Size = new System.Drawing.Size(76, 20);
             this.textBox12.TabIndex = 35;
             this.textBox12.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(667, 57);
+            this.label2.Location = new System.Drawing.Point(500, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 36;
             this.label2.Text = "label2";
             this.label2.Visible = false;
@@ -380,9 +394,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(667, 95);
+            this.label3.Location = new System.Drawing.Point(500, 77);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 37;
             this.label3.Text = "label3";
             this.label3.Visible = false;
@@ -390,9 +405,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(667, 132);
+            this.label4.Location = new System.Drawing.Point(500, 107);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 38;
             this.label4.Text = "label4";
             this.label4.Visible = false;
@@ -400,9 +416,10 @@
             // holdNavnLabel
             // 
             this.holdNavnLabel.AutoSize = true;
-            this.holdNavnLabel.Location = new System.Drawing.Point(382, 20);
+            this.holdNavnLabel.Location = new System.Drawing.Point(286, 16);
+            this.holdNavnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.holdNavnLabel.Name = "holdNavnLabel";
-            this.holdNavnLabel.Size = new System.Drawing.Size(74, 17);
+            this.holdNavnLabel.Size = new System.Drawing.Size(58, 13);
             this.holdNavnLabel.TabIndex = 39;
             this.holdNavnLabel.Text = "Hold Navn";
             this.holdNavnLabel.Visible = false;
@@ -410,9 +427,10 @@
             // antalSpillerLabel
             // 
             this.antalSpillerLabel.AutoSize = true;
-            this.antalSpillerLabel.Location = new System.Drawing.Point(367, 57);
+            this.antalSpillerLabel.Location = new System.Drawing.Point(275, 46);
+            this.antalSpillerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.antalSpillerLabel.Name = "antalSpillerLabel";
-            this.antalSpillerLabel.Size = new System.Drawing.Size(89, 17);
+            this.antalSpillerLabel.Size = new System.Drawing.Size(66, 13);
             this.antalSpillerLabel.TabIndex = 40;
             this.antalSpillerLabel.Text = "Antal spillere";
             this.antalSpillerLabel.Visible = false;
@@ -420,9 +438,10 @@
             // winLabel
             // 
             this.winLabel.AutoSize = true;
-            this.winLabel.Location = new System.Drawing.Point(417, 95);
+            this.winLabel.Location = new System.Drawing.Point(313, 77);
+            this.winLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.winLabel.Name = "winLabel";
-            this.winLabel.Size = new System.Drawing.Size(39, 17);
+            this.winLabel.Size = new System.Drawing.Size(31, 13);
             this.winLabel.TabIndex = 41;
             this.winLabel.Text = "Wins";
             this.winLabel.Visible = false;
@@ -430,26 +449,28 @@
             // lossLabel
             // 
             this.lossLabel.AutoSize = true;
-            this.lossLabel.Location = new System.Drawing.Point(417, 132);
+            this.lossLabel.Location = new System.Drawing.Point(313, 107);
+            this.lossLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lossLabel.Name = "lossLabel";
-            this.lossLabel.Size = new System.Drawing.Size(38, 17);
+            this.lossLabel.Size = new System.Drawing.Size(29, 13);
             this.lossLabel.TabIndex = 42;
             this.lossLabel.Text = "Loss";
             this.lossLabel.Visible = false;
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
-            this.chart1.Location = new System.Drawing.Point(385, 185);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(289, 150);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
-            this.chart1.Size = new System.Drawing.Size(648, 300);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(486, 244);
             this.chart1.TabIndex = 43;
             this.chart1.Text = "chart1";
             this.chart1.Visible = false;
@@ -457,21 +478,63 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(310, 11);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox2.Location = new System.Drawing.Point(232, 9);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(356, 452);
+            this.listBox2.Size = new System.Drawing.Size(268, 368);
             this.listBox2.TabIndex = 44;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(540, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Hold Navn";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(256, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 69);
+            this.button1.TabIndex = 46;
+            this.button1.Text = "Turneringstype 1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(400, 147);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 69);
+            this.button2.TabIndex = 47;
+            this.button2.Text = "Turneringstype 2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // Slet
+            // 
+            this.Slet.Location = new System.Drawing.Point(556, 281);
+            this.Slet.Name = "Slet";
+            this.Slet.Size = new System.Drawing.Size(55, 19);
+            this.Slet.TabIndex = 48;
+            this.Slet.Text = "Slet";
+            this.Slet.UseVisualStyleBackColor = true;
+            this.Slet.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 510);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.chart1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(784, 414);
+            this.Controls.Add(this.Slet);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lossLabel);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.antalSpillerLabel);
@@ -509,7 +572,9 @@
             this.Controls.Add(this.NyTurn);
             this.Controls.Add(this.TidligTurn);
             this.Controls.Add(this.hold);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.chart1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -566,6 +631,10 @@
         private System.Windows.Forms.ColorDialog colorDialog4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Slet;
     }
 }
 

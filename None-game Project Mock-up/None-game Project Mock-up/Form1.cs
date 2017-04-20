@@ -16,7 +16,7 @@ namespace None_game_Project_Mock_up
     {
 
         #region Fields
-        enum MenuState : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu }
+        enum MenuState : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu, turneringstype1, turneringstype2 }
 
         Database database = new Database();
 
@@ -91,6 +91,16 @@ namespace None_game_Project_Mock_up
             Environment.Exit(0);
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CurrentMenu = MenuState.turneringstype1;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CurrentMenu = MenuState.turneringstype2;
+        }
+
         private void spillerTilbage_Click(object sender, EventArgs e)
         {
             if (CurrentMenu == MenuState.tidligTurnMenu)
@@ -114,6 +124,10 @@ namespace None_game_Project_Mock_up
             if (CurrentMenu == MenuState.infoholdMenu)
             {
                 CurrentMenu = MenuState.holdMenu;
+            }
+            if (CurrentMenu == MenuState.turneringstype1 || CurrentMenu == MenuState.turneringstype2)
+            {
+                CurrentMenu = MenuState.nyTurnMenu;
             }
 
         }
@@ -183,6 +197,11 @@ namespace None_game_Project_Mock_up
                 tilbage.Visible = false; // Done 
                 listBox1.Visible = false; //Done
 
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
+
             }
             #endregion
 
@@ -205,7 +224,7 @@ namespace None_game_Project_Mock_up
                 label4.Visible = true;
 
                 chart1.Visible = true;
-
+                Slet.Visible = false;
 
 
             }
@@ -227,6 +246,8 @@ namespace None_game_Project_Mock_up
                 textBox12.Visible = true;
                 AddTeam.Visible = true;
                 listBox1.Visible = true;
+
+                Slet.Visible = true;
             }
             #endregion
 
@@ -239,24 +260,30 @@ namespace None_game_Project_Mock_up
                 Exit.Visible = false;
                 tilbage.Visible = true;
 
-                textBox1.Visible = true;
-                textBox2.Visible = true;
-                textBox3.Visible = true;
-                textBox4.Visible = true;
-                textBox5.Visible = true;
-                textBox6.Visible = true;
-                textBox7.Visible = true;
-                textBox8.Visible = true;
+                chart1.Visible = false;
+                turnNavn.Visible = false;
+                turnType.Visible = false;
+                antalHold.Visible = false;
+                sportsgren.Visible = false;
+                startDate.Visible = false;
+                endDate.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
 
-                turnNavn.Visible = true;
-                turnType.Visible = true;
-                antalHold.Visible = true;
-                sportsgren.Visible = true;
-                startDate.Visible = true;
-                endDate.Visible = true;
-                label7.Visible = true;
-                label8.Visible = true;
-                listBox2.Visible = true;
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = false;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                listBox2.Visible = false;
+
+                button1.Visible = true;
+                button2.Visible = true;
+
+                Slet.Visible = false;
             }
             #endregion
 
@@ -290,6 +317,8 @@ namespace None_game_Project_Mock_up
                 label3.Visible = false;
                 label4.Visible = false;
 
+                Slet.Visible = false;
+
             }
             #endregion
 
@@ -304,7 +333,77 @@ namespace None_game_Project_Mock_up
 
                 listBox2.Visible = true;
 
+                Slet.Visible = false;
+            }
+            #endregion
 
+            #region Turnerings type 1
+            if (CurrentMenu == MenuState.turneringstype1)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                textBox3.Visible = true;
+                textBox4.Visible = true;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+
+                turnNavn.Visible = true;
+                turnType.Visible = true;
+                antalHold.Visible = true;
+                sportsgren.Visible = true;
+                startDate.Visible = true;
+                endDate.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                listBox2.Visible = true;
+
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
+            }
+            #endregion
+
+            #region Turnerings type 2
+            if (CurrentMenu == MenuState.turneringstype2)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                textBox3.Visible = true;
+                textBox4.Visible = true;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+
+                turnNavn.Visible = true;
+                turnType.Visible = true;
+                antalHold.Visible = true;
+                sportsgren.Visible = true;
+                startDate.Visible = true;
+                endDate.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                listBox2.Visible = true;
+
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
             }
             #endregion
         }
@@ -394,6 +493,16 @@ namespace None_game_Project_Mock_up
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }
