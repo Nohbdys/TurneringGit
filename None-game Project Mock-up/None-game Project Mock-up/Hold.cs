@@ -19,7 +19,7 @@ namespace None_game_Project_Mock_up
         private string tournWins;
         private string division;
 
-        public Hold(string holdNavn, string goal, string win, string loss, string draw, string matches, string tournWins, string sportType, string playerAmount, string division)
+        public Hold(string holdNavn, string goal, string win, string loss, string draw, string matches, string tournWins, string playerAmount, string division)
         {
             this.holdNavn = holdNavn;
             this.goal = goal;
@@ -28,7 +28,7 @@ namespace None_game_Project_Mock_up
             this.draw = draw;
             this.matches = matches;
             this.tournWins = tournWins;
-            this.sportType = sportType;
+
             this.playerAmount = playerAmount;
             this.division = division;
             
@@ -79,11 +79,6 @@ namespace None_game_Project_Mock_up
             set { playerAmount = value; }
         }
 
-        public string SportType
-        {
-            get { return sportType; }
-            set { sportType = value; }
-        }
 
         public string TournWins
         {

@@ -19,7 +19,7 @@ namespace None_game_Project_Mock_up
         enum MenuState : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu }
 
         Database database = new Database();
-
+        SQLiteConnection dbConn = new SQLiteConnection("Data Source=data.db;Version=3;");
 
         List<Hold> holdList = new List<Hold>();
         bool addHold = false;
@@ -50,6 +50,17 @@ namespace None_game_Project_Mock_up
         private void button1_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.holdMenu;
+
+            dbConn.Open();
+            string sql = "select * from hold order by name,hold_id";
+            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+            SQLiteDataReader reader = command.ExecuteReader();
+            //  reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listBox1.Items.Add(reader["name"]);
+            }
+            dbConn.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -81,8 +92,18 @@ namespace None_game_Project_Mock_up
         private void Form1_Load(object sender, EventArgs e)
         {
             // Opret tabeller / databasser
-
-            database.databaseRun();
+            
+            database.databaseSetup();
+            dbConn.Open();
+            //string sql = "drop table hold";
+            string sql = "Select * from hold order by name";
+            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                holdList.Add(new Hold(""+ reader["name"]+"", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
+            }
+            dbConn.Close();
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -206,8 +227,6 @@ namespace None_game_Project_Mock_up
 
                 chart1.Visible = true;
 
-
-
             }
             #endregion
 
@@ -290,6 +309,7 @@ namespace None_game_Project_Mock_up
                 label3.Visible = false;
                 label4.Visible = false;
 
+
             }
             #endregion
 
@@ -312,14 +332,6 @@ namespace None_game_Project_Mock_up
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
-            /*
-            KeyEventArgs key = new KeyEventArgs(keyData);
-            if (key.Control && key.KeyCode == Keys.Enter)
-            {
-                BackColor = Color.Blue;
-            }
-            */
-
         }
 
         private void AddTeam_Click(object sender, EventArgs e)
@@ -330,12 +342,14 @@ namespace None_game_Project_Mock_up
             addHold = true;
             if (addHold && textBox9.TextLength > 0 && textBox10.TextLength > 0 && textBox11.TextLength > 0 && textBox12.TextLength > 0)
             {
-
+                
                 //textBox1 = textBox1.Text;
                 textbox9 = textBox9.Text;
                 textbox10 = textBox10.Text;
                 textbox11 = textBox11.Text;
                 textbox12 = textBox12.Text;
+
+
 
                 textBox9.Clear();
                 textBox10.Clear();
@@ -355,10 +369,23 @@ namespace None_game_Project_Mock_up
             foreach (Hold hold in holdList)
             {
 
-                count++;
-                if (holdList.Count >= count)
+                
+                if (holdList.Count > count)
                 {
-                    listBox1.Items.Add(hold.HoldNavn);
+
+                    dbConn.Open();
+                    string sql = "select * from hold order by name,hold_id";
+                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    //  reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        count++;
+                        listBox1.Items.Add(reader["name"]);
+                    }
+
+                    dbConn.Close();
+
 
                 }
 
@@ -370,7 +397,15 @@ namespace None_game_Project_Mock_up
             if (holdAdd)
             {
 
-                holdList.Add(new Hold(textbox9, "", textbox11, textbox12, "", "", "", "fodbold", textbox10, ""));
+
+                dbConn.Open();
+                string sql = "insert into hold values (null, '" + textbox9 + "'," + textbox10 + ", 1, 1, " + textbox11 + "," + textbox12 + ", 0, 0, 0);";
+                SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                SQLiteDataReader reader = command.ExecuteReader();
+                dbConn.Close();
+
+                holdList.Add(new Hold(textbox9, "", textbox11, textbox12, "", "", "", textbox10, ""));
+
 
                 holdAdd = false;
 
@@ -381,10 +416,21 @@ namespace None_game_Project_Mock_up
                 {
                     if (hold.HoldNavn.Equals(curItem))
                     {
-                        label1.Text = (hold.HoldNavn).ToString();
-                        label2.Text = (hold.PlayerAmount).ToString();
-                        label3.Text = (hold.Win).ToString();
-                        label4.Text = (hold.Loss).ToString();
+
+                        dbConn.Open();
+                        string sql = "select * from hold where name ='"+curItem+"' order by name";
+                        SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                      //  reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            label1.Text = (reader["name"]).ToString();
+                            label2.Text = (reader["playerAmount"]).ToString();
+                            label3.Text = (reader["win"]).ToString();
+                            label4.Text = (reader["loss"]).ToString();
+                        }
+
+                        dbConn.Close();
                     }
                 }
                 holdRead = false;
