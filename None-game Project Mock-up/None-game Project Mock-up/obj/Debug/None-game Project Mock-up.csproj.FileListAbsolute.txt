@@ -35,3 +35,10 @@ C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit\None-game Project Mock-up
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Form1.resources
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Properties.Resources.resources
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.csproj.GenerateResource.Cache
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.csprojResolveAssemblyReference.cache
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Form1.resources
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None_game_Project_Mock_up.Properties.Resources.resources
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.csproj.GenerateResource.Cache
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.exe
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.pdb
+C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.exe.config
