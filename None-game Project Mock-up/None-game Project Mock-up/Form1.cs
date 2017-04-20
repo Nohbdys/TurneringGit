@@ -32,6 +32,7 @@ namespace None_game_Project_Mock_up
 
         bool holdAdd = false;
         bool holdRead = false;
+        bool holdDelete = false;
         #endregion
 
         MenuState CurrentMenu = MenuState.mainMenu;
@@ -92,7 +93,7 @@ namespace None_game_Project_Mock_up
         private void Form1_Load(object sender, EventArgs e)
         {
             // Opret tabeller / databasser
-            
+
             database.databaseSetup();
             dbConn.Open();
             //string sql = "drop table hold";
@@ -101,7 +102,7 @@ namespace None_game_Project_Mock_up
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                holdList.Add(new Hold(""+ reader["name"]+"", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
+                holdList.Add(new Hold("" + reader["name"] + "", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
             }
             dbConn.Close();
         }
@@ -133,7 +134,7 @@ namespace None_game_Project_Mock_up
             {
                 CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == MenuState.nyholdMenu)
+            if (CurrentMenu == MenuState.nyholdMenu || CurrentMenu == MenuState.infoholdMenu)
             {
                 CurrentMenu = MenuState.holdMenu;
             }
@@ -142,10 +143,7 @@ namespace None_game_Project_Mock_up
             {
                 CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == MenuState.infoholdMenu)
-            {
-                CurrentMenu = MenuState.holdMenu;
-            }
+           
             if (CurrentMenu == MenuState.turneringstype1 || CurrentMenu == MenuState.turneringstype2)
             {
                 CurrentMenu = MenuState.nyTurnMenu;
@@ -442,7 +440,7 @@ namespace None_game_Project_Mock_up
             addHold = true;
             if (addHold && textBox9.TextLength > 0 && textBox10.TextLength > 0 && textBox11.TextLength > 0 && textBox12.TextLength > 0)
             {
-                
+
                 //textBox1 = textBox1.Text;
                 textbox9 = textBox9.Text;
                 textbox10 = textBox10.Text;
@@ -469,7 +467,7 @@ namespace None_game_Project_Mock_up
             foreach (Hold hold in holdList)
             {
 
-                
+
                 if (holdList.Count > count)
                 {
 
@@ -499,7 +497,7 @@ namespace None_game_Project_Mock_up
 
 
                 dbConn.Open();
-                string sql = "insert into hold values (null, '" + textbox9 + "'," + textbox10 + ", 1, 1, " + textbox11 + "," + textbox12 + ", 0, 0, 0);";
+                string sql = "insert into hold values (null, '" + textbox9 + "', 1, 1, "+ textbox10 +", " + textbox11 + "," + textbox12 + ", 0, 0, 0);";
                 SQLiteCommand command = new SQLiteCommand(sql, dbConn);
                 SQLiteDataReader reader = command.ExecuteReader();
                 dbConn.Close();
@@ -518,10 +516,10 @@ namespace None_game_Project_Mock_up
                     {
 
                         dbConn.Open();
-                        string sql = "select * from hold where name ='"+curItem+"' order by name";
+                        string sql = "select * from hold where name ='" + curItem + "' order by name";
                         SQLiteCommand command = new SQLiteCommand(sql, dbConn);
                         SQLiteDataReader reader = command.ExecuteReader();
-                      //  reader = command.ExecuteReader();
+                        //  reader = command.ExecuteReader();
                         if (reader.Read())
                         {
                             label1.Text = (reader["name"]).ToString();
@@ -534,6 +532,17 @@ namespace None_game_Project_Mock_up
                     }
                 }
                 holdRead = false;
+            }
+            if (holdDelete)
+            {
+
+                dbConn.Open();
+                string sql = "DELETE FROM hold WHERE name = '"+curItem+"';";
+                SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                SQLiteDataReader reader = command.ExecuteReader();
+                dbConn.Close();
+
+                holdDelete = false;
             }
         }
 
@@ -549,7 +558,20 @@ namespace None_game_Project_Mock_up
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            
+
+            // string sql = "DELETE FROM hold WHERE EXISTS ( SELECT name FROM hold WHERE name = '" + curItem + "');";
+
+            holdDelete = true;
+            holdMethod();
+            //  reader = command.ExecuteReader();
+            /*
+                        if (reader.Read())
+                        {
+                            listBox1.Items.Remove(reader["name"]);
+                        }
+                        */
+         //   dbConn.Close();
+
         }
     }
 }

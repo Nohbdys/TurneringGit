@@ -32,11 +32,27 @@ update tmp_hold set matchAmount = 1 where name = "hold 2"
             SQLiteConnection dbConn = new SQLiteConnection("Data Source=data.db;Version=3;");
 
             dbConn.Open();
-            string sql = "create table if not exists hold (hold_id integer primary key, name text, division int, matchAmount int, win int, loss int, draw int, goal int, wonTourn int);insert into hold values (null,  'hold 1', 1, 1, 0, 0, 0, 0, 0);";
+            string sql = "create table if not exists hold (hold_id integer primary key, name text, division int, matchAmount int, win int, loss int, draw int, goal int, wonTourn int);";
             SQLiteCommand command = new SQLiteCommand(sql, dbConn);
             SQLiteDataReader reader = command.ExecuteReader();
 
+
+            sql = "insert into hold values (null, 'hold 1', 1, 1, 0, 0, 0, 0, 0);";
+            command = new SQLiteCommand(sql, dbConn);
+            reader = command.ExecuteReader();
+            sql = "insert into hold values (null, 'hold 2', 1, 1, 0, 0, 0, 0, 0);";
+            command = new SQLiteCommand(sql, dbConn);
+            reader = command.ExecuteReader();
+            sql = "insert into hold values (null, 'hold 3', 1, 1, 0, 0, 0, 0, 0);";
+            command = new SQLiteCommand(sql, dbConn);
+
+            reader = command.ExecuteReader();
+
             sql = "update hold set win = 1 where name = 'hold 1';";
+            command = new SQLiteCommand(sql, dbConn);
+            reader = command.ExecuteReader();
+             
+            sql = "DELETE FROM hold WHERE name in ( SELECT name FROM hold  WHERE name = 'hold 1');";
             command = new SQLiteCommand(sql, dbConn);
             reader = command.ExecuteReader();
 
@@ -49,6 +65,10 @@ update tmp_hold set matchAmount = 1 where name = "hold 2"
                 reader["win"] + "\tID: " +
                 reader["hold_id"]);
             }
+
+            dbConn.Close();
+
+
             Console.ReadKey();
         }
         }
