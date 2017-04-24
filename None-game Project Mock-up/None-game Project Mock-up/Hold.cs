@@ -15,7 +15,6 @@ namespace None_game_Project_Mock_up
         private string draw;
         private string matches;
         private string playerAmount;
-        private string sportType;
         private string tournWins;
         private string division;
 

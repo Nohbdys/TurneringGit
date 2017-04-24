@@ -496,6 +496,17 @@
             this.listBox2.TabIndex = 44;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(720, 21);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 17);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Hold Navn";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(256, 147);
@@ -690,6 +701,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Slet;
+        private System.Windows.Forms.ColorDialog colorDialog5;
+        private System.Windows.Forms.ColorDialog colorDialog6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

@@ -14,12 +14,13 @@ namespace None_game_Project_Mock_up
 {
     public partial class Form1 : Form
     {
+        // sql = "insert into tmp_hold select * from hold";
 
         #region Fields
         enum MenuState : byte { mainMenu = 1, nyTurnMenu, tidligTurnMenu, holdMenu, nyholdMenu, infoholdMenu, turneringstype1, turneringstype2 }
 
         Database database = new Database();
-        SQLiteConnection dbConn = new SQLiteConnection("Data Source=data.db;Version=3;");
+
 
         List<Hold> holdList = new List<Hold>();
         bool addHold = false;
@@ -32,6 +33,7 @@ namespace None_game_Project_Mock_up
 
         bool holdAdd = false;
         bool holdRead = false;
+        bool holdDelete = false;
 
         //chart
         string xWin;
@@ -67,18 +69,29 @@ namespace None_game_Project_Mock_up
         #region Methods
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             CurrentMenu = MenuState.holdMenu;
-
-            dbConn.Open();
-            string sql = "select * from hold order by name,hold_id";
-            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-            SQLiteDataReader reader = command.ExecuteReader();
-            //  reader = command.ExecuteReader();
-            while (reader.Read())
+            using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
-                listBox1.Items.Add(reader["name"]);
+                dbConn.Open();
+
+                string sql = "select * from tmp_hold order by name,tmp_id";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+
+                        //  reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            listBox1.Items.Add(reader["name"]);
+                        }
+                    }
+                }
             }
-            dbConn.Close();
+
+
+            //dbConn.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -89,6 +102,7 @@ namespace None_game_Project_Mock_up
         private void button3_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.nyTurnMenu;
+            listBox2.Items.Clear();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,7 +113,7 @@ namespace None_game_Project_Mock_up
                 curItem = listBox1.SelectedItem.ToString();
 
             }
-
+            listBox1.ClearSelected();
             holdRead = true;
 
             holdMethod();
@@ -108,22 +122,55 @@ namespace None_game_Project_Mock_up
         private void Form1_Load(object sender, EventArgs e)
         {
             // Opret tabeller / databasser
-
             database.databaseSetup();
-            dbConn.Open();
-            //string sql = "drop table hold";
-            string sql = "Select * from hold order by name";
-            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-            SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                holdList.Add(new Hold("" + reader["name"] + "", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
-            }
-            dbConn.Close();
-        }
+            HoldSetup();
 
+            //dbConn.Close();
+        }
+        private void HoldSetup()
+        {
+            
+            using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+            {
+                dbConn.Open();
+                //string sql = "drop table hold";
+                string sql = "Select * from tmp_hold order by name";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            holdList.Add(new Hold("" + reader["name"] + "", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
+                        }
+                    }
+                }
+            }
+        }
         private void Exit_Click(object sender, EventArgs e)
         {
+            // Resetter hold og kopier tmp_hold over i hold
+            using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+            {
+                dbConn.Open();
+                string sql = "delete from hold";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                    }
+                }
+
+                sql = "insert into hold select * from tmp_hold;";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                    }
+
+                }
+            }
+
             //Exit 
             Environment.Exit(0);
         }
@@ -173,7 +220,7 @@ namespace None_game_Project_Mock_up
             {
                 CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == MenuState.nyholdMenu)
+            if (CurrentMenu == MenuState.nyholdMenu || CurrentMenu == MenuState.infoholdMenu)
             {
                 CurrentMenu = MenuState.holdMenu;
             }
@@ -182,13 +229,19 @@ namespace None_game_Project_Mock_up
             {
                 CurrentMenu = MenuState.mainMenu;
             }
-            if (CurrentMenu == MenuState.infoholdMenu)
-            {
-                CurrentMenu = MenuState.holdMenu;
-            }
+
             if (CurrentMenu == MenuState.turneringstype1 || CurrentMenu == MenuState.turneringstype2)
             {
+                listBox2.Items.Clear();
                 CurrentMenu = MenuState.nyTurnMenu;
+            }
+            if (CurrentMenu == MenuState.turneringstype1)
+            {
+                
+            }
+            if (CurrentMenu == MenuState.turneringstype2))
+            {
+                //listBox2.
             }
 
         }
@@ -502,25 +555,55 @@ namespace None_game_Project_Mock_up
                 addHold = false;
 
 
+                using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+                {
+                    dbConn.Open();
+                    string sql = "delete from hold";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                        }
+
+                    }
+
+                    sql = "insert into hold select * from tmp_hold;";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                        }
+                    }
+                }
+
             }
 
             foreach (Hold hold in holdList)
             {
                 if (holdList.Count > count)
                 {
-
-                    dbConn.Open();
-                    string sql = "select * from hold order by name,hold_id";
-                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                    SQLiteDataReader reader = command.ExecuteReader();
-                    //  reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
                     {
-                        count++;
-                        listBox1.Items.Add(reader["name"]);
-                    }
+                        dbConn.Open();
 
-                    dbConn.Close();
+                        string sql = "select * from tmp_hold order by name,tmp_id";
+                        using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                        {
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+
+                                //  reader = command.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    count++;
+                                    listBox1.Items.Add(reader["name"]);
+                                }
+                            }
+                        }
+                    }
+                    //dbConn.Close();
+
+
                 }
 
             }
@@ -532,11 +615,22 @@ namespace None_game_Project_Mock_up
             {
 
 
-                dbConn.Open();
-                string sql = "insert into hold values (null, '" + textbox9 + "'," + textbox10 + ", 1, 1, " + textbox11 + "," + textbox12 + ", 0, 0, 0);";
-                SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                SQLiteDataReader reader = command.ExecuteReader();
-                dbConn.Close();
+                using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+                {
+                    dbConn.Open();
+                    string sql = "insert into tmp_hold values (null, '" + textbox9 + "', 1, 1, " + textbox10 + ", " + textbox11 + "," + textbox12 + ", 0, 0, 0);";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+
+
+                        }
+                    }
+
+                }
+
+                //dbConn.Close();
 
                 holdList.Add(new Hold(textbox9, "", textbox11, textbox12, "", "", "", textbox10, ""));
 
@@ -551,32 +645,77 @@ namespace None_game_Project_Mock_up
                     if (hold.HoldNavn.Equals(curItem))
                     {
 
-                        dbConn.Open();
-                        string sql = "select * from hold where name ='" + curItem + "' order by name";
-                        SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                        SQLiteDataReader reader = command.ExecuteReader();
-                        //  reader = command.ExecuteReader();
-                        if (reader.Read())
+                        using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
                         {
-                            xWin = (reader["win"]).ToString();
-                            //xGoal = (reader["goal"]).ToString();
-                            this.chart1.Series["Win"].Points.Clear();
-                            this.chart1.Series["Goal"].Points.Clear();
-                            this.chart1.Series["Win"].Points.AddY(xWin);
-                            this.chart1.Series["Win"].Points.AddY(100);
-                            this.chart1.Series["Goal"].Points.AddY(xWin);
-                            this.chart1.Series["Goal"].Points.AddY(56);
-                            //this.chart1.Series["Goal"].Points.AddY(xGoal);
-                            label1.Text = (reader["name"]).ToString();
-                            label2.Text = (reader["playerAmount"]).ToString();
-                            label3.Text = (reader["win"]).ToString();
-                            label4.Text = (reader["loss"]).ToString();
+                            dbConn.Open();
+                            string sql = "select * from tmp_hold where name ='" + curItem + "' order by name";
+                            using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                            {
+
+                                using (SQLiteDataReader reader = command.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        label1.Text = (reader["name"]).ToString();
+                                        label2.Text = (reader["playerAmount"]).ToString();
+                                        label3.Text = (reader["win"]).ToString();
+                                        label4.Text = (reader["loss"]).ToString();
+                                        //dbConn.Close();
+                                    }
+                                }
+                            }
+
                         }
 
-                        dbConn.Close();
                     }
                 }
                 holdRead = false;
+            }
+            if (holdDelete)
+            {
+                //if (listBox1.SelectedItem != null)
+                //{
+
+
+                using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3;"))
+                {
+                    dbConn.Open();
+                    string sql = "DELETE FROM tmp_hold where name = '"+curItem+"'";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+
+                        }
+                    }
+                    //dbConn.Close();
+                    listBox1.Items.Remove(curItem);
+
+                    HoldSetup();
+                    
+                    holdDelete = false;
+                }
+                using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+                {
+                    dbConn.Open();
+                    string sql = "delete from hold";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                        }
+
+                    }
+
+                    sql = "insert into hold select * from tmp_hold;";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                        }
+                    }
+                }
             }
         }
 
@@ -599,6 +738,19 @@ namespace None_game_Project_Mock_up
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+
+            // string sql = "DELETE FROM hold WHERE EXISTS ( SELECT name FROM hold WHERE name = '" + curItem + "');";
+
+            holdDelete = true;
+            holdMethod();
+            //  reader = command.ExecuteReader();
+            /*
+                        if (reader.Read())
+                        {
+                            listBox1.Items.Remove(reader["name"]);
+                        }
+                        */
+            //   dbConn.Close();
 
         }
 
