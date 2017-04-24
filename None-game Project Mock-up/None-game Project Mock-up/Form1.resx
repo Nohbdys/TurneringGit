@@ -132,4 +132,10 @@
   <metadata name="colorDialog4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>555, 17</value>
   </metadata>
+<<<<<<< HEAD
+=======
+  <metadata name="colorDialog7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>699, 17</value>
+  </metadata>
+>>>>>>> eca91b27ef71d06924396e968dba1e386eb41494
 </root>
