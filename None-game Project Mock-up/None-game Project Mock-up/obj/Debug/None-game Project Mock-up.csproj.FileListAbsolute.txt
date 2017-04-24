@@ -42,3 +42,6 @@ C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project 
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.exe
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.pdb
 C:\Users\Casper\Desktop\TurneringsProjekt\TurneringGit - Kopi\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.exe.config
+C:\Users\admin\Desktop\TurneringsProjekt\TurneringGit 24042017 1301\None-game Project Mock-up\None-game Project Mock-up\bin\Debug\None-game Project Mock-up.exe.config
+C:\Users\admin\Desktop\TurneringsProjekt\TurneringGit 24042017 1301\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.exe
+C:\Users\admin\Desktop\TurneringsProjekt\TurneringGit 24042017 1301\None-game Project Mock-up\None-game Project Mock-up\obj\Debug\None-game Project Mock-up.pdb
