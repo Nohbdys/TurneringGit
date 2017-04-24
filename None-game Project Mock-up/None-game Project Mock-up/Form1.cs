@@ -51,6 +51,7 @@ namespace None_game_Project_Mock_up
         #region Methods
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             CurrentMenu = MenuState.holdMenu;
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
@@ -83,6 +84,7 @@ namespace None_game_Project_Mock_up
         private void button3_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.nyTurnMenu;
+            listBox2.Items.Clear();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,7 +192,16 @@ namespace None_game_Project_Mock_up
 
             if (CurrentMenu == MenuState.turneringstype1 || CurrentMenu == MenuState.turneringstype2)
             {
+                listBox2.Items.Clear();
                 CurrentMenu = MenuState.nyTurnMenu;
+            }
+            if (CurrentMenu == MenuState.turneringstype1)
+            {
+                
+            }
+            if (CurrentMenu == MenuState.turneringstype2))
+            {
+                //listBox2.
             }
 
         }
@@ -645,8 +656,6 @@ namespace None_game_Project_Mock_up
 
                     HoldSetup();
                     
-                    
-                    //}
                     holdDelete = false;
                 }
                 using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))

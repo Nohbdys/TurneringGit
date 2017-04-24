@@ -81,6 +81,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.Slet = new System.Windows.Forms.Button();
             this.colorDialog5 = new System.Windows.Forms.ColorDialog();
+            this.colorDialog6 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -486,7 +487,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(341, 181);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 85);
             this.button1.TabIndex = 46;
@@ -497,7 +498,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(533, 181);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 85);
             this.button2.TabIndex = 47;
@@ -508,7 +509,7 @@
             // Slet
             // 
             this.Slet.Location = new System.Drawing.Point(741, 346);
-            this.Slet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Slet.Margin = new System.Windows.Forms.Padding(4);
             this.Slet.Name = "Slet";
             this.Slet.Size = new System.Drawing.Size(73, 23);
             this.Slet.TabIndex = 48;
@@ -627,6 +628,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Slet;
         private System.Windows.Forms.ColorDialog colorDialog5;
+        private System.Windows.Forms.ColorDialog colorDialog6;
     }
 }
 
