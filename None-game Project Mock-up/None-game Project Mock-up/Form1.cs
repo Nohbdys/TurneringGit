@@ -97,12 +97,14 @@ namespace None_game_Project_Mock_up
         private void button2_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.tidligTurnMenu;
+            MenuStatesMethod();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.nyTurnMenu;
             listBox2.Items.Clear();
+            MenuStatesMethod();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,6 +184,7 @@ namespace None_game_Project_Mock_up
         {
             CurrentMenu = MenuState.turneringstype1;
             turneringsType = 1;
+            MenuStatesMethod();
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
@@ -217,6 +220,7 @@ namespace None_game_Project_Mock_up
                             listBox2.Items.Add(reader["name"]);
                         }
                     }
+            MenuStatesMethod();
 
                 }
 
@@ -258,19 +262,20 @@ namespace None_game_Project_Mock_up
             {
                 //listBox2.
             }
+            MenuStatesMethod();
 
         }
 
         private void nySpiller_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.nyholdMenu;
-
+            MenuStatesMethod();
         }
 
         private void spillerInfo_Click(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.infoholdMenu;
-
+            MenuStatesMethod();
         }
 
         #endregion
@@ -292,6 +297,254 @@ namespace None_game_Project_Mock_up
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+            /*
+            #region MainMenu
+            if (CurrentMenu == MenuState.mainMenu)
+            {
+                TidligTurn.Visible = true;
+                hold.Visible = true;
+                NyTurn.Visible = true;
+                Exit.Visible = true;
+
+                chart1.Visible = false;
+                turnNavn.Visible = false;
+                turnType.Visible = false;
+                antalHold.Visible = false;
+                sportsgren.Visible = false;
+                startDate.Visible = false;
+                endDate.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
+
+                TournamentName.Visible = false;
+                textBox2.Visible = false;
+                TeamAmount.Visible = false;
+                SportType.Visible = false;
+                TourStartDate.Visible = false;
+                TourEndDate.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                listBox2.Visible = false;
+
+                holdNy.Visible = false; // Done
+                holdInfo.Visible = false; // Done
+                tilbage.Visible = false; // Done 
+                listBox1.Visible = false; //Done
+
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
+
+            }
+            #endregion
+
+            #region InfoHoldMenu
+            if (CurrentMenu == MenuState.infoholdMenu)
+            {
+
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                holdNy.Visible = false;
+                holdInfo.Visible = false;
+                tilbage.Visible = true;
+
+                listBox1.Visible = true;
+
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+
+                chart1.Visible = true;
+                Slet.Visible = false;
+
+
+            }
+            #endregion
+
+            #region NyHoldMenu 
+            if (CurrentMenu == MenuState.nyholdMenu)
+            {
+                lossLabel.Visible = true;
+                winLabel.Visible = true;
+                antalSpillerLabel.Visible = true;
+                holdNavnLabel.Visible = true;
+
+                holdNy.Visible = false;
+                holdInfo.Visible = false;
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
+                AddTeam.Visible = true;
+                listBox1.Visible = true;
+
+                Slet.Visible = true;
+            }
+            #endregion
+
+            #region NyTurneringMenu
+            if (CurrentMenu == MenuState.nyTurnMenu)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                chart1.Visible = false;
+                turnNavn.Visible = false;
+                turnType.Visible = false;
+                antalHold.Visible = false;
+                sportsgren.Visible = false;
+                startDate.Visible = false;
+                endDate.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
+
+                TournamentName.Visible = false;
+                textBox2.Visible = false;
+                TeamAmount.Visible = false;
+                SportType.Visible = false;
+                TourStartDate.Visible = false;
+                TourEndDate.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                listBox2.Visible = false;
+
+                button1.Visible = true;
+                button2.Visible = true;
+
+                Slet.Visible = false;
+            }
+            #endregion
+
+            #region HoldMenu
+            if (CurrentMenu == MenuState.holdMenu)
+            {
+                holdNy.Visible = true;
+                holdInfo.Visible = true;
+                tilbage.Visible = true;
+
+                chart1.Visible = false;
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+
+                lossLabel.Visible = false;
+                winLabel.Visible = false;
+                antalSpillerLabel.Visible = false;
+                holdNavnLabel.Visible = false;
+
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                AddTeam.Visible = false;
+                listBox1.Visible = false;
+
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+
+                Slet.Visible = false;
+
+            }
+            #endregion
+
+            #region TidligereTurneringMenu
+            if (CurrentMenu == MenuState.tidligTurnMenu)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                listBox2.Visible = true;
+
+                Slet.Visible = false;
+            }
+            #endregion
+
+            #region Turnerings type 1
+            if (CurrentMenu == MenuState.turneringstype1)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                TournamentName.Visible = true;
+                textBox2.Visible = true;
+                TeamAmount.Visible = true;
+                SportType.Visible = true;
+                TourStartDate.Visible = true;
+                TourEndDate.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+
+                turnNavn.Visible = true;
+                turnType.Visible = true;
+                antalHold.Visible = true;
+                sportsgren.Visible = true;
+                startDate.Visible = true;
+                endDate.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                listBox2.Visible = true;
+
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
+            }
+            #endregion
+
+            #region Turnerings type 2
+            if (CurrentMenu == MenuState.turneringstype2)
+            {
+                TidligTurn.Visible = false;
+                hold.Visible = false;
+                NyTurn.Visible = false;
+                Exit.Visible = false;
+                tilbage.Visible = true;
+
+                TournamentName.Visible = true;
+                textBox2.Visible = true;
+                TeamAmount.Visible = true;
+                SportType.Visible = true;
+                TourStartDate.Visible = true;
+                TourEndDate.Visible = true;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+
+                turnNavn.Visible = true;
+                turnType.Visible = true;
+                antalHold.Visible = true;
+                sportsgren.Visible = true;
+                startDate.Visible = true;
+                endDate.Visible = true;
+                label7.Visible = true;
+                label8.Visible = true;
+                listBox2.Visible = true;
+
+                button1.Visible = false;
+                button2.Visible = false;
+
+                Slet.Visible = false;
+            }
+            #endregion
+            */
+        }
+
+        private void MenuStatesMethod()
         {
             #region MainMenu
             if (CurrentMenu == MenuState.mainMenu)
@@ -548,6 +801,7 @@ namespace None_game_Project_Mock_up
                 Slet.Visible = false;
             }
             #endregion
+            
         }
 
         private void textBox9_TextChanged(object sender, EventArgs e)
