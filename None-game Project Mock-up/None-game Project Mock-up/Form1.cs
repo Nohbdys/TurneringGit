@@ -32,6 +32,24 @@ namespace None_game_Project_Mock_up
 
         bool holdAdd = false;
         bool holdRead = false;
+
+        //chart
+        string xWin;
+        string xGoal;
+
+        //Turnering
+        List<Tournament> tournamentList = new List<Tournament>();
+        bool addTournament = false;
+        bool tournamentAdd = false;
+        bool tournamentRead = false;
+        int turneringsType;
+        string tTournamentName;
+        string tStartDate;
+        string tEndDate;
+        string tTeamAmount;
+        string tSportType;
+
+
         #endregion
 
         MenuState CurrentMenu = MenuState.mainMenu;
@@ -85,14 +103,12 @@ namespace None_game_Project_Mock_up
             holdRead = true;
 
             holdMethod();
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // Opret tabeller / databasser
-            
+
             database.databaseSetup();
             dbConn.Open();
             //string sql = "drop table hold";
@@ -101,7 +117,7 @@ namespace None_game_Project_Mock_up
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                holdList.Add(new Hold(""+ reader["name"]+"", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
+                holdList.Add(new Hold("" + reader["name"] + "", "" + reader["goal"] + "", "" + reader["win"] + "", "" + reader["loss"] + "", "" + reader["draw"] + "", "" + reader["matchAmount"] + "", "" + reader["wonTourn"] + "", "" + reader["playerAmount"] + "", "" + reader["division"] + ""));
             }
             dbConn.Close();
         }
@@ -115,11 +131,35 @@ namespace None_game_Project_Mock_up
         private void button1_Click_1(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.turneringstype1;
+            turneringsType = 1;
+
+            dbConn.Open();
+            string sql = "select * from turneringer order by name,turn_id";
+            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+            SQLiteDataReader reader = command.ExecuteReader();
+            //  reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader["name"]);
+            }
+            dbConn.Close();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.turneringstype2;
+            turneringsType = 2;
+
+            dbConn.Open();
+            string sql = "select * from turnering order by name,turn_id";
+            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+            SQLiteDataReader reader = command.ExecuteReader();
+            //  reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader["name"]);
+            }
+            dbConn.Close();
         }
 
         private void spillerTilbage_Click(object sender, EventArgs e)
@@ -203,12 +243,12 @@ namespace None_game_Project_Mock_up
                 label7.Visible = false;
                 label8.Visible = false;
 
-                textBox1.Visible = false;
+                TournamentName.Visible = false;
                 textBox2.Visible = false;
-                textBox3.Visible = false;
-                textBox4.Visible = false;
-                textBox5.Visible = false;
-                textBox6.Visible = false;
+                TeamAmount.Visible = false;
+                SportType.Visible = false;
+                TourStartDate.Visible = false;
+                TourEndDate.Visible = false;
                 textBox7.Visible = false;
                 textBox8.Visible = false;
                 listBox2.Visible = false;
@@ -291,12 +331,12 @@ namespace None_game_Project_Mock_up
                 label7.Visible = false;
                 label8.Visible = false;
 
-                textBox1.Visible = false;
+                TournamentName.Visible = false;
                 textBox2.Visible = false;
-                textBox3.Visible = false;
-                textBox4.Visible = false;
-                textBox5.Visible = false;
-                textBox6.Visible = false;
+                TeamAmount.Visible = false;
+                SportType.Visible = false;
+                TourStartDate.Visible = false;
+                TourEndDate.Visible = false;
                 textBox7.Visible = false;
                 textBox8.Visible = false;
                 listBox2.Visible = false;
@@ -367,12 +407,12 @@ namespace None_game_Project_Mock_up
                 Exit.Visible = false;
                 tilbage.Visible = true;
 
-                textBox1.Visible = true;
+                TournamentName.Visible = true;
                 textBox2.Visible = true;
-                textBox3.Visible = true;
-                textBox4.Visible = true;
-                textBox5.Visible = true;
-                textBox6.Visible = true;
+                TeamAmount.Visible = true;
+                SportType.Visible = true;
+                TourStartDate.Visible = true;
+                TourEndDate.Visible = true;
                 textBox7.Visible = true;
                 textBox8.Visible = true;
 
@@ -402,12 +442,12 @@ namespace None_game_Project_Mock_up
                 Exit.Visible = false;
                 tilbage.Visible = true;
 
-                textBox1.Visible = true;
+                TournamentName.Visible = true;
                 textBox2.Visible = true;
-                textBox3.Visible = true;
-                textBox4.Visible = true;
-                textBox5.Visible = true;
-                textBox6.Visible = true;
+                TeamAmount.Visible = true;
+                SportType.Visible = true;
+                TourStartDate.Visible = true;
+                TourEndDate.Visible = true;
                 textBox7.Visible = true;
                 textBox8.Visible = true;
 
@@ -442,7 +482,7 @@ namespace None_game_Project_Mock_up
             addHold = true;
             if (addHold && textBox9.TextLength > 0 && textBox10.TextLength > 0 && textBox11.TextLength > 0 && textBox12.TextLength > 0)
             {
-                
+
                 //textBox1 = textBox1.Text;
                 textbox9 = textBox9.Text;
                 textbox10 = textBox10.Text;
@@ -464,12 +504,8 @@ namespace None_game_Project_Mock_up
 
             }
 
-
-
             foreach (Hold hold in holdList)
             {
-
-                
                 if (holdList.Count > count)
                 {
 
@@ -485,8 +521,6 @@ namespace None_game_Project_Mock_up
                     }
 
                     dbConn.Close();
-
-
                 }
 
             }
@@ -518,12 +552,21 @@ namespace None_game_Project_Mock_up
                     {
 
                         dbConn.Open();
-                        string sql = "select * from hold where name ='"+curItem+"' order by name";
+                        string sql = "select * from hold where name ='" + curItem + "' order by name";
                         SQLiteCommand command = new SQLiteCommand(sql, dbConn);
                         SQLiteDataReader reader = command.ExecuteReader();
-                      //  reader = command.ExecuteReader();
+                        //  reader = command.ExecuteReader();
                         if (reader.Read())
                         {
+                            xWin = (reader["win"]).ToString();
+                            //xGoal = (reader["goal"]).ToString();
+                            this.chart1.Series["Win"].Points.Clear();
+                            this.chart1.Series["Goal"].Points.Clear();
+                            this.chart1.Series["Win"].Points.AddY(xWin);
+                            this.chart1.Series["Win"].Points.AddY(100);
+                            this.chart1.Series["Goal"].Points.AddY(xWin);
+                            this.chart1.Series["Goal"].Points.AddY(56);
+                            //this.chart1.Series["Goal"].Points.AddY(xGoal);
                             label1.Text = (reader["name"]).ToString();
                             label2.Text = (reader["playerAmount"]).ToString();
                             label3.Text = (reader["win"]).ToString();
@@ -539,7 +582,14 @@ namespace None_game_Project_Mock_up
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Get the currently selected item in the ListBox.
+            if (listBox2.SelectedItem != null)
+            {
+                curItem = listBox2.SelectedItem.ToString();
+            }
 
+            tournamentRead = true;
+            TournamentMethod();
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -549,7 +599,98 @@ namespace None_game_Project_Mock_up
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            addTournament = true;
+            int count = 0;
+            if (addTournament && TournamentName.TextLength > 0 && TourEndDate.TextLength > 0 && TourStartDate.TextLength > 0 && TeamAmount.TextLength > 0 && SportType.TextLength > 0)
+            {
+                tStartDate = TourStartDate.Text;
+                tEndDate = TourEndDate.Text;
+                tTournamentName = TournamentName.Text;
+                tTeamAmount = TeamAmount.Text;
+                tSportType = SportType.Text;
+
+
+                TourStartDate.Clear();
+                TourEndDate.Clear();
+                TournamentName.Clear();
+                TeamAmount.Clear();
+                SportType.Clear();
+
+                tournamentAdd = true;
+                TournamentMethod();
+
+                addTournament = false;
+            }
+
+            foreach (Tournament tournament in tournamentList)
+            {
+                if (tournamentList.Count > count)
+                {
+
+                    dbConn.Open();
+                    string sql = "select * from hold order by name,hold_id";
+                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    //  reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        count++;
+                        listBox2.Items.Add(reader["name"]);
+                    }
+
+                    dbConn.Close();
+                }
+
+            }
+        }
+
+        private void TournamentMethod()
+        {
+            if (tournamentAdd)
+            {
+                dbConn.Open();
+                string sql = "insert into turneringer values (null, '" + tTournamentName + "','" + tTeamAmount + "','" + tStartDate + "','" + tEndDate + "','" + tSportType + "'," + turneringsType + ");";
+                SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                SQLiteDataReader reader = command.ExecuteReader();
+                dbConn.Close();
+
+                tournamentList.Add(new Tournament(tTournamentName, tStartDate, tEndDate, tTeamAmount, tSportType, turneringsType));
+
+
+                tournamentAdd = false;
+
+            }
+
+            if (tournamentRead)
+            {
+                foreach (Tournament tournament in tournamentList)
+                {
+                    if (tournament.TournamentName.Equals(curItem))
+                    {
+
+                        dbConn.Open();
+                        string sql = "select * from turneringer where name ='" + curItem + "' order by name";
+                        SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        //  reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            label5.Text = (reader["name"]).ToString();
+                            label6.Text = (reader["teamAmount"]).ToString();
+                            label9.Text = (reader["startDate"]).ToString();
+                            label10.Text = (reader["endDate"]).ToString();
+                        }
+
+                        dbConn.Close();
+                    }
+                }
+                tournamentRead = false;
+            }
         }
     }
 }

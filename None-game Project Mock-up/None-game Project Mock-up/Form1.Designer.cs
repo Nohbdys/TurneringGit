@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.hold = new System.Windows.Forms.Button();
             this.TidligTurn = new System.Windows.Forms.Button();
             this.NyTurn = new System.Windows.Forms.Button();
@@ -40,12 +41,12 @@
             this.holdInfo = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tilbage = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TournamentName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.TeamAmount = new System.Windows.Forms.TextBox();
+            this.SportType = new System.Windows.Forms.TextBox();
+            this.TourStartDate = new System.Windows.Forms.TextBox();
+            this.TourEndDate = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.turnNavn = new System.Windows.Forms.Label();
@@ -76,10 +77,14 @@
             this.colorDialog4 = new System.Windows.Forms.ColorDialog();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Slet = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,13 +175,13 @@
             this.tilbage.UseVisualStyleBackColor = true;
             this.tilbage.Click += new System.EventHandler(this.spillerTilbage_Click);
             // 
-            // textBox1
+            // TournamentName
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 14);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 13;
+            this.TournamentName.Location = new System.Drawing.Point(23, 14);
+            this.TournamentName.Margin = new System.Windows.Forms.Padding(2);
+            this.TournamentName.Name = "TournamentName";
+            this.TournamentName.Size = new System.Drawing.Size(76, 20);
+            this.TournamentName.TabIndex = 13;
             // 
             // textBox2
             // 
@@ -186,37 +191,37 @@
             this.textBox2.Size = new System.Drawing.Size(76, 20);
             this.textBox2.TabIndex = 14;
             // 
-            // textBox3
+            // TeamAmount
             // 
-            this.textBox3.Location = new System.Drawing.Point(23, 105);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 20);
-            this.textBox3.TabIndex = 15;
+            this.TeamAmount.Location = new System.Drawing.Point(23, 105);
+            this.TeamAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.TeamAmount.Name = "TeamAmount";
+            this.TeamAmount.Size = new System.Drawing.Size(76, 20);
+            this.TeamAmount.TabIndex = 15;
             // 
-            // textBox4
+            // SportType
             // 
-            this.textBox4.Location = new System.Drawing.Point(23, 150);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(76, 20);
-            this.textBox4.TabIndex = 16;
+            this.SportType.Location = new System.Drawing.Point(23, 150);
+            this.SportType.Margin = new System.Windows.Forms.Padding(2);
+            this.SportType.Name = "SportType";
+            this.SportType.Size = new System.Drawing.Size(76, 20);
+            this.SportType.TabIndex = 16;
             // 
-            // textBox5
+            // TourStartDate
             // 
-            this.textBox5.Location = new System.Drawing.Point(23, 196);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(76, 20);
-            this.textBox5.TabIndex = 17;
+            this.TourStartDate.Location = new System.Drawing.Point(23, 196);
+            this.TourStartDate.Margin = new System.Windows.Forms.Padding(2);
+            this.TourStartDate.Name = "TourStartDate";
+            this.TourStartDate.Size = new System.Drawing.Size(76, 20);
+            this.TourStartDate.TabIndex = 17;
             // 
-            // textBox6
+            // TourEndDate
             // 
-            this.textBox6.Location = new System.Drawing.Point(23, 241);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(76, 20);
-            this.textBox6.TabIndex = 18;
+            this.TourEndDate.Location = new System.Drawing.Point(23, 241);
+            this.TourEndDate.Margin = new System.Windows.Forms.Padding(2);
+            this.TourEndDate.Name = "TourEndDate";
+            this.TourEndDate.Size = new System.Drawing.Size(76, 20);
+            this.TourEndDate.TabIndex = 18;
             // 
             // textBox7
             // 
@@ -459,17 +464,23 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(289, 150);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "Win";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Legend = "Legend1";
+            series6.Name = "Goal";
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(486, 244);
             this.chart1.TabIndex = 43;
             this.chart1.Text = "chart1";
@@ -484,16 +495,6 @@
             this.listBox2.Size = new System.Drawing.Size(268, 368);
             this.listBox2.TabIndex = 44;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(540, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "Hold Navn";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button1
             // 
@@ -525,16 +526,71 @@
             this.Slet.UseVisualStyleBackColor = true;
             this.Slet.Click += new System.EventHandler(this.button3_Click_1);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(647, 335);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(56, 19);
+            this.button3.TabIndex = 49;
+            this.button3.Text = "Tilføj Hold";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_2);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(553, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(553, 46);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "label5";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(553, 77);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 52;
+            this.label9.Text = "label9";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(547, 108);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "label10";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 414);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.Slet);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.lossLabel);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.antalSpillerLabel);
@@ -558,12 +614,12 @@
             this.Controls.Add(this.turnNavn);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.TourEndDate);
+            this.Controls.Add(this.TourStartDate);
+            this.Controls.Add(this.SportType);
+            this.Controls.Add(this.TeamAmount);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TournamentName);
             this.Controls.Add(this.tilbage);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.holdInfo);
@@ -595,12 +651,12 @@
         private System.Windows.Forms.Button holdInfo;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button tilbage;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TournamentName;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox TeamAmount;
+        private System.Windows.Forms.TextBox SportType;
+        private System.Windows.Forms.TextBox TourStartDate;
+        private System.Windows.Forms.TextBox TourEndDate;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label turnNavn;
@@ -631,10 +687,14 @@
         private System.Windows.Forms.ColorDialog colorDialog4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Slet;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
