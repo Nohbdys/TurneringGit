@@ -129,7 +129,8 @@ namespace None_game_Project_Mock_up
         }
         private void HoldSetup()
         {
-
+            #region Holdsetup
+            /*
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
@@ -146,6 +147,8 @@ namespace None_game_Project_Mock_up
                     }
                 }
             }
+            */
+            #endregion
         }
         private void Exit_Click(object sender, EventArgs e)
         {
@@ -192,9 +195,7 @@ namespace None_game_Project_Mock_up
                             listBox2.Items.Add(reader["name"]);
                         }
                     }
-
                 }
-
             }
 
         }
@@ -206,7 +207,7 @@ namespace None_game_Project_Mock_up
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
-                string sql = "select * from turnering order by name,turn_id";
+                string sql = "select * from turneringer order by name,turn_id";
                 using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -246,7 +247,7 @@ namespace None_game_Project_Mock_up
 
             if (CurrentMenu == MenuState.turneringstype1 || CurrentMenu == MenuState.turneringstype2)
             {
-                listBox2.Items.Clear();
+                //listBox2.Items.Clear();
                 CurrentMenu = MenuState.nyTurnMenu;
             }
             if (CurrentMenu == MenuState.turneringstype1)
@@ -300,6 +301,12 @@ namespace None_game_Project_Mock_up
                 NyTurn.Visible = true;
                 Exit.Visible = true;
 
+                label11.Visible = false;
+                label12.Visible = false;
+                label13.Visible = false;
+                label14.Visible = false;
+                label15.Visible = false;
+
                 chart1.Visible = false;
                 turnNavn.Visible = false;
                 turnType.Visible = false;
@@ -336,6 +343,11 @@ namespace None_game_Project_Mock_up
             #region InfoHoldMenu
             if (CurrentMenu == MenuState.infoholdMenu)
             {
+                label11.Visible = true;
+                label12.Visible = true;
+                label13.Visible = true;
+                label14.Visible = true;
+                label15.Visible = true;
 
                 TidligTurn.Visible = false;
                 hold.Visible = false;
@@ -366,6 +378,8 @@ namespace None_game_Project_Mock_up
                 antalSpillerLabel.Visible = true;
                 holdNavnLabel.Visible = true;
 
+
+                
                 holdNy.Visible = false;
                 holdInfo.Visible = false;
                 textBox9.Visible = true;
@@ -588,8 +602,10 @@ namespace None_game_Project_Mock_up
                     }
                 }
 
-            }
 
+
+
+            }
             foreach (Hold hold in holdList)
             {
                 if (holdList.Count > count)
@@ -613,11 +629,7 @@ namespace None_game_Project_Mock_up
                             }
                         }
                     }
-                    //dbConn.Close();
-
-
                 }
-
             }
         }
         private void holdMethod()
@@ -668,10 +680,19 @@ namespace None_game_Project_Mock_up
                                 {
                                     if (reader.Read())
                                     {
+                                        // division int, matchAmount int, draw int, goal int, wonTourn int
+
                                         label1.Text = (reader["name"]).ToString();
                                         label2.Text = (reader["playerAmount"]).ToString();
                                         label3.Text = (reader["win"]).ToString();
                                         label4.Text = (reader["loss"]).ToString();
+                                        
+                                        label11.Text = (reader["draw"]).ToString();
+                                        label12.Text = (reader["matchAmount"]).ToString();
+                                        label13.Text = (reader["goal"]).ToString();
+                                        label14.Text = (reader["wonTourn"]).ToString();
+                                        label15.Text = (reader["division"]).ToString();
+                                        
                                         //dbConn.Close();
                                     }
                                 }
@@ -819,14 +840,38 @@ namespace None_game_Project_Mock_up
         {
             if (tournamentAdd)
             {
+                listBox2.Items.Clear();
                 using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
                 {
-                    dbConn.Open();
                     string sql = "insert into turneringer values (null, '" + tTournamentName + "','" + tTeamAmount + "','" + tStartDate + "','" + tEndDate + "','" + tSportType + "'," + turneringsType + ");";
-                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                    SQLiteDataReader reader = command.ExecuteReader();
-                    dbConn.Close();
+                    dbConn.Open();
+                    using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+
+                        }
+                    }
                 }
+
+                    using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+                    {
+                        dbConn.Open();
+                        string sql = "select * from hold order by name,hold_id";
+                        using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                        {
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    
+                                    listBox2.Items.Add(reader["name"]);
+                                }
+                            }
+                        }
+                   
+                }
+
                 tournamentList.Add(new Tournament(tTournamentName, tStartDate, tEndDate, tTeamAmount, tSportType, turneringsType));
 
 
@@ -863,6 +908,11 @@ namespace None_game_Project_Mock_up
                 }
                 tournamentRead = false;
             }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
