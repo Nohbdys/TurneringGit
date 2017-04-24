@@ -131,7 +131,7 @@ namespace None_game_Project_Mock_up
         }
         private void HoldSetup()
         {
-            
+
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
@@ -182,35 +182,49 @@ namespace None_game_Project_Mock_up
             CurrentMenu = MenuState.turneringstype1;
             turneringsType = 1;
             MenuStatesMethod();
-
-            dbConn.Open();
-            string sql = "select * from turneringer order by name,turn_id";
-            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-            SQLiteDataReader reader = command.ExecuteReader();
-            //  reader = command.ExecuteReader();
-            while (reader.Read())
+            using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
-                listBox2.Items.Add(reader["name"]);
+                dbConn.Open();
+                string sql = "select * from turneringer order by name,turn_id";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listBox2.Items.Add(reader["name"]);
+                        }
+                    }
+
+                }
+
             }
-            dbConn.Close();
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             CurrentMenu = MenuState.turneringstype2;
             turneringsType = 2;
+            using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+            {
+                dbConn.Open();
+                string sql = "select * from turnering order by name,turn_id";
+                using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listBox2.Items.Add(reader["name"]);
+                        }
+                    }
             MenuStatesMethod();
 
-            dbConn.Open();
-            string sql = "select * from turnering order by name,turn_id";
-            SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-            SQLiteDataReader reader = command.ExecuteReader();
-            //  reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                listBox2.Items.Add(reader["name"]);
+                }
+
             }
-            dbConn.Close();
+
         }
 
         private void spillerTilbage_Click(object sender, EventArgs e)
@@ -241,7 +255,7 @@ namespace None_game_Project_Mock_up
             }
             if (CurrentMenu == MenuState.turneringstype1)
             {
-                
+
             }
             if (CurrentMenu == MenuState.turneringstype2)
             {
@@ -796,8 +810,6 @@ namespace None_game_Project_Mock_up
                 textbox11 = textBox11.Text;
                 textbox12 = textBox12.Text;
 
-
-
                 textBox9.Clear();
                 textBox10.Clear();
                 textBox11.Clear();
@@ -934,7 +946,7 @@ namespace None_game_Project_Mock_up
                 using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3;"))
                 {
                     dbConn.Open();
-                    string sql = "DELETE FROM tmp_hold where name = '"+curItem+"'";
+                    string sql = "DELETE FROM tmp_hold where name = '" + curItem + "'";
                     using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
                     {
 
@@ -947,7 +959,7 @@ namespace None_game_Project_Mock_up
                     listBox1.Items.Remove(curItem);
 
                     HoldSetup();
-                    
+
                     holdDelete = false;
                 }
                 using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
@@ -1037,21 +1049,23 @@ namespace None_game_Project_Mock_up
             {
                 if (tournamentList.Count > count)
                 {
-
-                    dbConn.Open();
-                    string sql = "select * from hold order by name,hold_id";
-                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                    SQLiteDataReader reader = command.ExecuteReader();
-                    //  reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
                     {
-                        count++;
-                        listBox2.Items.Add(reader["name"]);
+                        dbConn.Open();
+                        string sql = "select * from hold order by name,hold_id";
+                        using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                        {
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    count++;
+                                    listBox2.Items.Add(reader["name"]);
+                                }
+                            }
+                        }
                     }
-
-                    dbConn.Close();
                 }
-
             }
         }
 
@@ -1059,12 +1073,14 @@ namespace None_game_Project_Mock_up
         {
             if (tournamentAdd)
             {
-                dbConn.Open();
-                string sql = "insert into turneringer values (null, '" + tTournamentName + "','" + tTeamAmount + "','" + tStartDate + "','" + tEndDate + "','" + tSportType + "'," + turneringsType + ");";
-                SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                SQLiteDataReader reader = command.ExecuteReader();
-                dbConn.Close();
-
+                using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
+                {
+                    dbConn.Open();
+                    string sql = "insert into turneringer values (null, '" + tTournamentName + "','" + tTeamAmount + "','" + tStartDate + "','" + tEndDate + "','" + tSportType + "'," + turneringsType + ");";
+                    SQLiteCommand command = new SQLiteCommand(sql, dbConn);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    dbConn.Close();
+                }
                 tournamentList.Add(new Tournament(tTournamentName, tStartDate, tEndDate, tTeamAmount, tSportType, turneringsType));
 
 
@@ -1078,21 +1094,25 @@ namespace None_game_Project_Mock_up
                 {
                     if (tournament.TournamentName.Equals(curItem))
                     {
-
-                        dbConn.Open();
-                        string sql = "select * from turneringer where name ='" + curItem + "' order by name";
-                        SQLiteCommand command = new SQLiteCommand(sql, dbConn);
-                        SQLiteDataReader reader = command.ExecuteReader();
-                        //  reader = command.ExecuteReader();
-                        if (reader.Read())
+                        using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
                         {
-                            label5.Text = (reader["name"]).ToString();
-                            label6.Text = (reader["teamAmount"]).ToString();
-                            label9.Text = (reader["startDate"]).ToString();
-                            label10.Text = (reader["endDate"]).ToString();
-                        }
+                            dbConn.Open();
+                            string sql = "select * from turneringer where name ='" + curItem + "' order by name";
+                            using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
+                            {
+                                using (SQLiteDataReader reader = command.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        label5.Text = (reader["name"]).ToString();
+                                        label6.Text = (reader["teamAmount"]).ToString();
+                                        label9.Text = (reader["startDate"]).ToString();
+                                        label10.Text = (reader["endDate"]).ToString();
+                                    }
+                                }
 
-                        dbConn.Close();
+                            }
+                        }
                     }
                 }
                 tournamentRead = false;

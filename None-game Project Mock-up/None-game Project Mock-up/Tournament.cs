@@ -15,6 +15,16 @@ namespace None_game_Project_Mock_up
         private string sportType;
         private int tournamentType;
 
+        public Tournament(string tournamentName, string startDate, string endDate, string teamAmount, string sportType, int tournamentType)
+        {
+            this.TournamentName = tournamentName;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.TeamAmount = teamAmount;
+            this.SportType = sportType;
+            this.TournamentType = tournamentType;
+        }
+
         public string TournamentName
         {
             get{return tournamentName;}
@@ -51,15 +61,7 @@ namespace None_game_Project_Mock_up
             set{tournamentType = value;}
         }
 
-        public Tournament(string tournamentName, string startDate, string endDate, string teamAmount, string sportType, int tournamentType)
-        {
-            this.TournamentName = tournamentName;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.TeamAmount = teamAmount;
-            this.SportType = sportType;
-            this.TournamentType = tournamentType;
-        }
+
         public Tournament()
         {
 
