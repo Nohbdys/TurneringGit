@@ -61,7 +61,7 @@ namespace None_game_Project_Mock_up
 
             InitializeComponent();
 
-
+            MenuStatesMethod();
             BackColor = Color.Green;
         }
 
@@ -71,6 +71,7 @@ namespace None_game_Project_Mock_up
         {
             listBox1.Items.Clear();
             CurrentMenu = MenuState.holdMenu;
+            MenuStatesMethod();
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
@@ -206,10 +207,11 @@ namespace None_game_Project_Mock_up
         {
             CurrentMenu = MenuState.turneringstype2;
             turneringsType = 2;
+            MenuStatesMethod();
             using (var dbConn = new SQLiteConnection("Data Source = data.db; Version = 3; "))
             {
                 dbConn.Open();
-                string sql = "select * from turnering order by name,turn_id";
+                string sql = "select * from turneringer order by name,turn_id";
                 using (SQLiteCommand command = new SQLiteCommand(sql, dbConn))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -219,7 +221,7 @@ namespace None_game_Project_Mock_up
                             listBox2.Items.Add(reader["name"]);
                         }
                     }
-            MenuStatesMethod();
+            
 
                 }
 
@@ -922,6 +924,17 @@ namespace None_game_Project_Mock_up
                                 {
                                     if (reader.Read())
                                     {
+
+                                        //chart1.ChartAreas[0].AxisX.Maximum = 13;
+                                        //chart1.ChartAreas[0].AxisX.Minimum = 0;
+                                        //chart1.ChartAreas[0].AxisX.CustomLabels = (reader["win"]).ToString();
+
+                                        
+                                        chart1.Series["Goal"].Points.AddY(3);
+                                        //chart1.Series["Goal"].Points.AddXY(2, (reader["win"]).ToString());
+                                        chart1.Series["Goal"].Points.AddY(1);
+                                        
+                                                                                
                                         label1.Text = (reader["name"]).ToString();
                                         label2.Text = (reader["playerAmount"]).ToString();
                                         label3.Text = (reader["win"]).ToString();
@@ -1037,7 +1050,7 @@ namespace None_game_Project_Mock_up
                 TourEndDate.Clear();
                 TournamentName.Clear();
                 TeamAmount.Clear();
-                SportType.Clear();
+                SportType.Clear();                
 
                 tournamentAdd = true;
                 TournamentMethod();
@@ -1117,6 +1130,11 @@ namespace None_game_Project_Mock_up
                 }
                 tournamentRead = false;
             }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
